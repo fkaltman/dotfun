@@ -1,0 +1,328 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* this allows the linear gradient background 
+to stretch, instead of repeating*/
+
+html {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Playfair Display", serif;
+  background-color: rgba(64, 85, 70, 0.8);
+  text-align: center;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+h1 {
+  display: block;
+  font-size: 3rem;
+  margin: 3vw;
+  /* border: 2px solid black; */
+  text-align: center;
+  /* padding-top: 20px; */
+  padding-top: 10vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-decoration: none;
+  /* color: rgba(0, 0, 0, 0.7); */
+}
+
+hr {
+  display: block;
+  margin: 0 100px;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+#bottom {
+  display: block;
+  margin: 30px 100px 50px 100px;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+#playlist {
+  margin-top: 3vh;
+}
+
+.song a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.song a:visited {
+  color: rgb(185, 140, 71);
+  background-color: transparent;
+}
+
+.song a:hover {
+  color: #66836c;
+  background-color: transparent;
+}
+
+.song a:active {
+  color: rgb(86, 143, 86);
+  background-color: transparent;
+}
+
+h2 {
+  font-weight: lighter;
+  margin-top: 20px;
+}
+
+iframe {
+  display: block;
+  margin: auto;
+  /* border: 2px solid rgb(43, 43, 43); */
+  box-shadow: 0 0px 15px -10px #777;
+  border-radius: 5px;
+}
+
+.please-enter {
+  font-family: "Roboto", sans-serif;
+
+}
+
+#form {
+  font-size: 16px;
+  width: 40vw;
+  margin:30vh auto;
+  padding: 20px;
+  border-radius: 5px;
+  min-width: 200px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* formerly called promo, didnt indicate that this was a button imo */
+#promo-button {
+  font-size: 16px;
+  width: 50px;
+  border-radius: 6px;
+  margin-top: 1vh;
+  font-family: "Roboto", sans-serif;
+}
+
+#code-input {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  width: 80px;
+  margin-top: 1vh;
+}
+
+.vinyl-master-title {
+  font-family: "Playfair Display", serif;
+  padding-top: 4vh;
+}
+
+#thanks {
+  color: blanchedalmond;
+  font-family: "Roboto", sans-serif;
+  width: 72vw;
+  padding: 16px;
+  margin: auto;
+  text-align: justify;
+  line-height: 2em;
+}
+
+#hires {
+  font-family: "Roboto", sans-serif;
+}
+
+#links {
+  margin-top: 4vh;
+  /* display: inline; */
+}
+
+.listen,
+.download {
+  text-decoration: none;
+  margin: 4px;
+  padding: 8px 10px;
+  border: 2px solid rgba(255, 235, 204, 0.4);
+  border-radius: 3px;
+  background-color: rgba(255, 235, 204, 0.4);
+  color: black;
+  width: 100px;
+}
+
+.song {
+  font-family: "Roboto", sans-serif;
+  margin-top: 1.6vh;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+audio {
+  margin: auto;
+  width: 280px;
+  margin-top: 10vh;
+}
+
+table {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 30px auto;
+  background-color: white;
+}
+td {
+  /* border: 2px solid black; */
+  background-color: rgb(241, 243, 244);
+  /* border-radius: 5px; */
+}
+
+ul {
+  list-style-type: none;
+}
+
+.gradient-background {
+  background: linear-gradient(#794846, #a6523f); 
+}
+
+.fix-flower {
+  width: 25vw;
+  position:fixed;
+  bottom:0px;
+  left:70%;
+}
+
+.fix-face {
+  width: 30vw;
+  position:absolute;
+  /* top:20px; */
+  top: 4vh;
+  left:34%;
+}
+
+/* ====================================== MQ ========================================= */
+
+/* for smaller than 480px */
+@media only screen and (max-width: 580px) {
+  iframe {
+    width: 270px;
+    height: 174px;
+  }
+  h1 {
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    padding-top:4px;
+  }
+  #thanks {
+    width: 270px;
+    /* height: 350px; */
+    margin: auto;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    line-height: 1.4em;
+    /* height:60vh; */
+  }
+  audio {
+    width: 230px;
+  }
+
+  .vinyl-master-title {
+    padding-top: 10vh;
+  }
+  
+  /* .listen,
+  .download {
+    margin: 5px auto;
+  } */
+
+  /* .listen {
+    margin-top: 2vh;
+  }
+
+  .download {
+    margin-top: 2vh;
+  } */
+
+  #form {
+    height: 155px;
+    /* border: 2px solid rgb(43, 43, 43); */
+    border-radius: 5px;
+    margin-top: 160px;
+    /* margin-top: 20vh; */
+  }
+
+  #links {
+    margin: auto;
+    margin-top: 4vh;
+  }
+
+  .song {
+    font-size: 1.6rem;
+  }
+
+  .fix-flower {
+    width: 45vw;
+    left:60%;
+  }
+
+  .fix-face {
+    width: 50vw;
+    position:fixed;
+    top:20px;
+    /* top: 4vh; */
+    left:24%;
+  }
+}
+
+/* for larger than 800px */
+@media only screen and (min-width: 800px) {
+  iframe {
+    width: 650px;
+    height: 364px;
+  }
+  h1 {
+    font-size: 4rem;
+    margin: 1vw;
+  }
+  hr {
+    margin: 0 200px;
+  }
+
+  #form {
+    /* below line was throwing things off */
+    /* margin: 20vw 50vh; */
+    /* below line was throwing things off */
+    /* width: 500px; */
+    /* below made it so short that button didnt fit in */
+    /* height: 75px; */
+    /* border: 2px solid rgb(43, 43, 43); */
+    border-radius: 5px;
+  }
+}
+
+/* for larger than 1200px - really only for the flower */
+@media only screen and (min-width: 1200px) {
+  .fix-flower {
+    width: 20vw;
+    /* left:60%; */
+  }
+}
