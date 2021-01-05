@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Product</title>
-  </head>
-  <body>
+<% layout('layouts/boilerplate') %>
     <form action="/products" method="POST">
       <div>
         <label for="title">Title</label>
@@ -18,5 +11,3 @@
       <button>Add Product</button>
       <a href="/products">All Products</a>
     </form>
-  </body>
-</html>
