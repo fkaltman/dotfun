@@ -32,8 +32,8 @@ const seedDB = async () => {
   theMomentSticker.save(function (err, theMomentSticker) {
     if (err) return console.error(err);
   });
-  const theMomentPoster = new Product({ title: "The Moment Poster" });
-  theMomentPoster.save(function (err, theMomentPoster) {
+  const theMomentPrint = new Product({ title: "The Moment Print" });
+  theMomentPrint.save(function (err, theMomentPrint) {
     if (err) return console.error(err);
   });
 };
