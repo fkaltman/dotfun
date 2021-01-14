@@ -219,6 +219,24 @@ ul {
   left:34%;
 }
 
+/* ====================================== Store ========================================= */
+
+#wrapper {
+  margin: auto;
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+#wrapper > div {
+  flex: 1 1 50%;
+  border: 2px solid black;
+}
+
 /* ====================================== MQ ========================================= */
 
 /* for smaller than 480px */

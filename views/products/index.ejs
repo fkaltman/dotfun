@@ -1,8 +1,8 @@
 <% layout('layouts/boilerplate') %>
     <h1>Store</h1>
-    <ul>
+    <div id="wrapper">
       <% for (let product of products){%>
-      <li><a href="/products/<%= product._id%>"><%= product.title %></a></li>
+      <div><a href="/products/<%= product._id%>"><%= product.title %></a></div>
       <%}%>
-    </ul>
+      </div>
   
