@@ -19,7 +19,7 @@ db.once("open", () => {
 
 const app = express();
 
-// below tells express to use the vieww engine ejs
+// below tells express to use the view engine ejs
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");

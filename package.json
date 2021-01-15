@@ -16,7 +16,7 @@
     "method-override": "^3.0.0",
     "mongo": "^0.1.0",
     "mongodb": "^3.6.3",
-    "mongoose": "^5.11.8",
+    "mongoose": "^5.11.11",
     "nodemon": "^2.0.6"
   }
 }
