@@ -5,7 +5,13 @@ const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const Product = require("./models/product");
 
-mongoose.connect("mongodb://localhost:27017/andrew-store", {
+// mongoose.connect("mongodb://localhost:27017/andrew-store", {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+// });
+
+mongoose.connect("mongodb+srv://andrewaltman1:baseluvi@andrew-store.faqrq.mongodb.net/andrew-store?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
