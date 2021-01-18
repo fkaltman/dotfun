@@ -1,8 +1,7 @@
 /* this is for amplitude.html */
-/*
-  When the bandcamp link is pressed, stop all propagation so AmplitudeJS doesn't
-  play the song.
-*/
+/* When the bandcamp link is pressed, stop all 
+propagation so AmplitudeJS doesn't play the song.*/
+
 let bandcampLinks = document.getElementsByClassName('bandcamp-link');
 
 for( var i = 0; i < bandcampLinks.length; i++ ){
@@ -15,10 +14,10 @@ for( var i = 0; i < bandcampLinks.length; i++ ){
 let songElements = document.getElementsByClassName('song');
 
 for( var i = 0; i < songElements.length; i++ ){
-  /*
-    Ensure that on mouseover, CSS styles don't get messed up for active songs.
-  */
-  songElements[i].addEventListener('mouseover', function(){
+  /* Ensure that on mouseover, CSS styles 
+  don't get messed up for active songs.*/
+
+  songElements[i].addEventListener('mouseover', function () {
     this.style.backgroundColor = '#00A0FF';
 
     this.querySelectorAll('.song-meta-data .song-title')[0].style.color = '#FFFFFF';
@@ -33,9 +32,9 @@ for( var i = 0; i < songElements.length; i++ ){
     this.querySelectorAll('.song-duration')[0].style.color = '#FFFFFF';
   });
 
-  /*
-    Ensure that on mouseout, CSS styles don't get messed up for active songs.
-  */
+  /* Ensure that on mouseout, CSS styles don't 
+  get messed up for active songs.*/
+
   songElements[i].addEventListener('mouseout', function(){
     this.style.backgroundColor = '#FFFFFF';
     this.querySelectorAll('.song-meta-data .song-title')[0].style.color = '#272726';
@@ -46,17 +45,16 @@ for( var i = 0; i < songElements.length; i++ ){
     this.querySelectorAll('.song-duration')[0].style.color = '#607D8B';
   });
 
-  /*
-    Show and hide the play button container on the song when the song is clicked.
-  */
+  /* Show and hide the play button container 
+  on the song when the song is clicked.*/
+
   songElements[i].addEventListener('click', function(){
     this.querySelectorAll('.play-button-container')[0].style.display = 'none';
   });
 }
 
-/*
-  Initializes AmplitudeJS
-*/
+/* Initializes AmplitudeJS */
+
 Amplitude.init({
   "songs": [
     {
