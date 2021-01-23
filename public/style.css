@@ -22,27 +22,47 @@ h1 {
   display: block;
   font-size: 3rem;
   margin: 3vw;
-  /* border: 2px solid black; */
   text-align: center;
-  /* padding-top: 20px; */
-  padding-top: 10vh;
-  padding-left: 0px;
-  padding-right: 0px;
   text-decoration: none;
   /* color: rgba(0, 0, 0, 0.7); */
 }
+
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color:black;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #66836c;
+  background-color: transparent;
+}
+
+a:active {
+  color: rgb(86, 143, 86);
+  background-color: transparent;
+}
+/* ====================== Header ======================= */
+
 header {
   display: flex;
+  font-size: large;
   justify-content: space-between;
   align-items: center;
   align-content: center;
   margin: auto;
   padding: 15px;
-  width: 100vw;
+  /* width: 100vw; */
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 .header-right a {
-  margin: 0px 2px;
+  margin: 0px 7px;
 }
 
 hr {
@@ -58,7 +78,7 @@ hr {
   );
 }
 
-#bottom {
+/* #bottom {
   display: block;
   margin: 30px 100px 50px 100px;
   border: 0;
@@ -69,7 +89,9 @@ hr {
     rgba(0, 0, 0, 0.75),
     rgba(0, 0, 0, 0)
   );
-}
+} */
+
+/* ====================== Player ======================= */
 
 #playlist {
   margin-top: 3vh;
@@ -109,6 +131,8 @@ iframe {
   border-radius: 5px;
 }
 
+/* ================== Promo Code Page =================== */
+
 .please-enter {
   font-family: "Roboto", sans-serif;
 }
@@ -123,6 +147,13 @@ iframe {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
 /* formerly called promo, didnt indicate that this was a button imo */
 #promo-button {
   font-size: 16px;
@@ -182,14 +213,6 @@ iframe {
   font-size: 2rem;
 }
 
-.show {
-  display: block;
-}
-
-.hide {
-  display: none;
-}
-
 audio {
   margin: auto;
   width: 280px;
@@ -234,23 +257,49 @@ ul {
 /* ====================== Store ======================= */
 
 #wrapper {
-  margin: auto 10vw;
+  margin: auto;
   /* width: 80vw;
   height: 80vh; */
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
   justify-content: space-around;
   align-items: center;
   align-content: center;
-  background:crimson;
+  background: crimson;
 }
 #wrapper > div {
-  flex: 1 1 50%;
-  border: 2px solid black;
+  /* flex: 1 1 50%; */
+  flex: 1 1 auto;
+  margin: 3vh 10vw;
+  /* border: 2px solid black; */
+  border-radius: 2px;
+  box-shadow: 10px 10px 8px #888888;
   background-color: antiquewhite;
-  padding: 10px 0px;
+  padding: 0px 0px 10px 0px;
 }
+
+#wrapper a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#wrapper a:visited {
+  color: black;
+  background-color: transparent;
+}
+
+#wrapper a:hover {
+  color: #66836c;
+  background-color: transparent;
+}
+
+#wrapper a:active {
+  color: rgb(86, 143, 86);
+  background-color: transparent;
+}
+
 
 .product-thumb {
   max-width: 200px;
@@ -343,7 +392,7 @@ ul {
   }
   h1 {
     font-size: 4rem;
-    margin: 1vw;
+    margin: 2vh auto;
   }
   hr {
     margin: 0 200px;
