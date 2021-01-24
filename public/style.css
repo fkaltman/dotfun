@@ -34,7 +34,7 @@ a:link {
 }
 
 a:visited {
-  color:black;
+  color: black;
   background-color: transparent;
 }
 
@@ -257,26 +257,29 @@ ul {
 /* ====================== Store ======================= */
 
 #wrapper {
-  margin: auto;
-  /* width: 80vw;
-  height: 80vh; */
+  margin: 3vh 5vw;
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   justify-content: space-around;
   align-items: center;
   align-content: center;
-  background: crimson;
+  /* background: crimson; */
+  background: linear-gradient(#794846, #a6523f);
+  border-radius: 3px;
 }
 #wrapper > div {
-  /* flex: 1 1 50%; */
-  flex: 1 1 auto;
-  margin: 3vh 10vw;
+  flex: 1 1 25%;
+  margin: 2vh 3vw;
   /* border: 2px solid black; */
   border-radius: 2px;
-  box-shadow: 10px 10px 8px #888888;
+  box-shadow: 5px 5px 3px #888888;
   background-color: antiquewhite;
   padding: 0px 0px 10px 0px;
+}
+
+#wrapper > div:nth-last-of-type(1) {
+  flex: 50%;
 }
 
 #wrapper a:link {
@@ -300,10 +303,47 @@ ul {
   background-color: transparent;
 }
 
-
 .product-thumb {
   max-width: 200px;
   max-height: 200px;
+}
+
+/* ====================== Product Page ======================== */
+
+img {
+  height: auto;
+  width: 50vw;
+  border-radius: 5px;
+}
+
+#image-buy{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin: 2vh 5vw;
+  /* padding: 15px; */
+  /* width: 100vw; */
+  /* background-color: rgb(255, 255, 255); */
+}
+
+#image-buy > div{
+  flex: auto;
+  /* margin: 5px; */
+}
+
+#image-buy > div > h2{
+margin: auto;
+}
+
+#buy-window {
+/* border: 2px solid black; */
+}
+
+p {
+  margin: 2vh 5vw;
+  font-size: 0.9rem;
+  font-weight: bolder;
 }
 
 /* ====================== MQ ======================== */
@@ -408,7 +448,10 @@ ul {
     /* border: 2px solid rgb(43, 43, 43); */
     border-radius: 5px;
   }
-}
+
+  #wrapper {
+    margin: 4vh 20vw;
+  }
 
 /* for larger than 1200px - really only for the flower */
 @media only screen and (min-width: 1200px) {
