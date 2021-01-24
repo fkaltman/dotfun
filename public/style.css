@@ -271,7 +271,7 @@ ul {
 #store-products > div {
   flex: 1 1 25%;
   margin: 2vh 3vw;
-  /* border: 2px solid black; */
+  /* max-height: 250px; */
   border-radius: 2px;
   box-shadow: 5px 5px 3px #888888;
   background-color: antiquewhite;
@@ -280,6 +280,11 @@ ul {
 
 #store-products > div:nth-last-of-type(1) {
   flex: 50%;
+}
+
+.product-thumb {
+  max-width: 200px;
+  max-height: 200px;
 }
 
 #store-products a:link {
@@ -303,10 +308,7 @@ ul {
   background-color: transparent;
 }
 
-.product-thumb {
-  max-width: 200px;
-  max-height: 200px;
-}
+
 
 /* ====================== Product Page ======================== */
 
