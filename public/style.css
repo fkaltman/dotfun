@@ -256,7 +256,7 @@ ul {
 
 /* ====================== Store ======================= */
 
-#wrapper {
+#store-products {
   margin: 3vh 5vw;
   display: flex;
   flex-direction: row-reverse;
@@ -268,7 +268,7 @@ ul {
   background: linear-gradient(#794846, #a6523f);
   border-radius: 3px;
 }
-#wrapper > div {
+#store-products > div {
   flex: 1 1 25%;
   margin: 2vh 3vw;
   /* border: 2px solid black; */
@@ -278,27 +278,27 @@ ul {
   padding: 0px 0px 10px 0px;
 }
 
-#wrapper > div:nth-last-of-type(1) {
+#store-products > div:nth-last-of-type(1) {
   flex: 50%;
 }
 
-#wrapper a:link {
+#store-products a:link {
   color: black;
   background-color: transparent;
   text-decoration: none;
 }
 
-#wrapper a:visited {
+#store-products a:visited {
   color: black;
   background-color: transparent;
 }
 
-#wrapper a:hover {
+#store-products a:hover {
   color: #66836c;
   background-color: transparent;
 }
 
-#wrapper a:active {
+#store-products a:active {
   color: rgb(86, 143, 86);
   background-color: transparent;
 }
@@ -449,7 +449,7 @@ p {
     border-radius: 5px;
   }
 
-  #wrapper {
+  #store-products {
     margin: 4vh 20vw;
   }
 
