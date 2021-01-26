@@ -18,3 +18,4 @@ const verifyCode = function (e) {
 };
 
 form.addEventListener("submit", verifyCode);
+

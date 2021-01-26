@@ -5,6 +5,7 @@ const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const Product = require("./models/product");
 
+
 // mongoose.connect("mongodb://localhost:27017/andrew-store", {
 //   useNewUrlParser: true,
 //   useCreateIndex: true,
@@ -48,7 +49,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/products", async (req, res) => {
-  const products = await Product.find({}).sort({price: -1});
+  const products = await Product.find({}).sort({ price: -1 });
   res.render("products/index", { products });
 });
 
@@ -61,7 +62,7 @@ app.get("/products/:id", async (req, res) => {
   res.render("products/show", { product });
 });
 
-// ================================= DB GUI PAGE ===================================== 
+// ================================= DB PAGE ===================================== 
 
 app.post("/products", async (req, res) => {
   const product = new Product(req.body.product);
@@ -89,3 +90,4 @@ app.delete("/products", async (req, res) => {
 app.listen(3000, () => {
   console.log("butts on port 3000");
 });
+
