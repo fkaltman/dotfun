@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/products", async (req, res) => {
-  const products = await Product.find({}).sort({price: 1});
+  const products = await Product.find({}).sort({price: -1});
   res.render("products/index", { products });
 });
 
