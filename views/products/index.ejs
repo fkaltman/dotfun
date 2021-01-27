@@ -1,14 +1,33 @@
 <% layout('layouts/boilerplate') %>
-<!-- <h1>Store</h1> -->
-<div id="store-products">
-  <% for (let product of products){%>
-  <div>
-    <br />
-    <a href="/products/<%= product._id%>"><img src="<%= product.image %> " alt="" class="product-thumb" /></a>
-    <a href="/products/<%= product._id%>"> <h2><%= product.title %> </a></h2>
-    <p><%= product.subtitle %> </p>
-    <p>$<%= product.price %> </p>
-    <button class="buy-button-store">Buy</button><button class="details-button-store">Details</button>
+  <!-- <h1>Store</h1> -->
+  <div id="store-products">
+    <% for (let product of products){%>
+      <div>
+        <br />
+        <a href="/products/<%= product._id%>"><img src="<%= product.image %> " alt="" class="product-thumb" /></a>
+        <a href="/products/<%= product._id%>">
+          <h2>
+            <%= product.title %>
+        </a></h2>
+        <p>
+          <%= product.subtitle %>
+        </p>
+        <p>$<%= product.price %>
+        </p>
+        <button class="buy-button-store">Buy</button>
+        <button id="details" class="details-button-store">Details</button>
+      </div>
+      <%}%>
+
   </div>
-  <%}%>
-</div>
+
+
+  <script >
+    const details = document.querySelector("#details")
+
+    details.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Test!',
+        text: 'A description about the product for consideration',
+      });
+    })</script>
