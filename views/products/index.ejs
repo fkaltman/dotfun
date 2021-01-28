@@ -1,11 +1,16 @@
 <% layout('layouts/boilerplate') %>
+
+
+
+<body>
+
   <div id="store-products">
     <% for (let product of products){%>
       <div>
         <br />
         <a href="/products/<%= product._id%>"><img src="<%= product.image %> " alt="" class="product-thumb" /></a>
         <a href="/products/<%= product._id%>">
-          <h2>
+          <h2 class="title">
             <%= product.title %>
         </a></h2>
         <p>
@@ -23,29 +28,19 @@
   <script>
     const details = document.querySelectorAll(".details-button-store")
 
-     async function showModal(e){
-      await Swal.fire({
-        title: this.parentElement.children[3],
-        text: this.parentElement.children[4].innerText,
+    function showModal(e){
+      Swal.fire({
+        title: `${this.parentElement.children[3].innerText}`,
+        text: `${this.parentElement.children[4].innerText}`,
       });
-      location.reload();
     } 
-
-    // const titles = document.querySelectorAll("h2");
-
-    // function showModal(e){
-    //   for (let title of titles){
-    //     if (title == this.parentElement.children[3]){
-    //        Swal.fire({
-    //        title: title,
-    //     // text: this.parentElement.children[4].innerText,
-    //      });
-    //     }
-    //   }
-    // } 
 
     for (let detail of details) {
   detail.addEventListener('click', showModal)
 };
 
-</script>
+</script> 
+
+  
+</body>
+  
