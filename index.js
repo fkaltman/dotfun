@@ -5,13 +5,6 @@ const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const Product = require("./models/product");
 
-
-// mongoose.connect("mongodb://localhost:27017/andrew-store", {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true,
-// });
-
 mongoose.connect("mongodb+srv://andrewaltman1:baseluvi@andrew-store.faqrq.mongodb.net/andrew-store?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -60,6 +53,14 @@ app.get("/products/new", (req, res) => {
 app.get("/products/:id", async (req, res) => {
   const product = await Product.findById(req.params.id);
   res.render("products/show", { product });
+});
+
+app.get("/vinylmasters.html", (req, res) => {
+  res.render("vinylmasters");
+});
+
+app.get("/player", (req, res) => {
+  res.render("player");
 });
 
 // ================================= DB PAGE ===================================== 

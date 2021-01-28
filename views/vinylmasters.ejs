@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate') %>
+<body class="gradient-background">
+  <form id="form" class="show">
+    <p class="please-enter">Please enter the promo&nbsp;code:</p>
+    <input type="text" id="code-input" /><br />
+
+    <button type="submit" id="promo-button">enter</button>
+  </form>
+
+  <div id="hires" class="hide">
+    <h1 class="vinyl-master-title">Vinyl Masters</h1>
+    <hr />
+    <p id="thanks">
+      Thank you for supporting The Moment. These files are the high resolution
+      digital masters that were pressed into the vinyl records. They are 24bit
+      96k files. CDs are only 16bit 44.1k files for comparison. CDs can also be
+      mastered louder than vinyl which means that there is more compression of
+      each track to get them to seem louder. Vinyl needs to have a lower level
+      to avoid distortion, so a lot of the final compression is removed. This
+      results in a file that is more true to the original mix and has more
+      dynmaics than a CD master. I hope you enjoy them.
+    </p>
+    <div id="links">
+      <a class="listen" href="/player">Listen</a>
+      <a class="download" href="audio/The Moment Vinyl Masters.zip">Download</a>
+    </div>
+  </div>
+  <script>
+    window.addEventListener("resize", () => {
+      document.body.height = window.innerHeight;
+    });
+
+    const form = document.querySelector("#form");
+    const codeInput = document.querySelector("#code-input");
+    const theGoods = document.querySelector("#hires");
+
+    const verifyCode = function (e) {
+      let theCode = codeInput.value;
+      if (theCode === "hires" || "Hires") {
+        theGoods.className = "show";
+        form.className = "hide";
+        e.preventDefault();
+      } else {
+        alert("sorry no");
+      }
+    };
+
+    form.addEventListener("submit", verifyCode);
+  </script>
+</body>
