@@ -26,18 +26,33 @@
   </div>
   
   <script>
+
     const details = document.querySelectorAll(".details-button-store")
 
+    let obj;
+
+    function getProducts() {fetch('/modal')
+      .then(res => res.json())
+      .then(data => obj = data)
+    }
+
     function showModal(e){
-      Swal.fire({
-        title: `${this.parentElement.children[3].innerText}`,
-        text: `${this.parentElement.children[4].innerText}`,
-      });
-    } 
+          let title = `${this.parentElement.children[3].innerText}`;
+          for (let i = 0; i < obj.products.length; i++){
+            if (title == obj.products[i].title){
+              Swal.fire({
+              title: obj.products[i].title,
+            //text: `${this.parentElement.children[4].innerText}`,
+            }) 
+          }
+        } 
+      }
+
+    window.addEventListener('DOMContentLoaded', getProducts);
 
     for (let detail of details) {
-  detail.addEventListener('click', showModal)
-};
+      detail.addEventListener('click', showModal)
+    };
 
 </script> 
 

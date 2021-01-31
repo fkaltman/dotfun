@@ -63,6 +63,11 @@ app.get("/player", (req, res) => {
   res.render("player");
 });
 
+app.get("/modal", async (req, res) => {
+  const products = await Product.find({}).sort({ price: -1 });
+  res.send({ products });
+});
+
 // ================================= DB PAGE ===================================== 
 
 app.post("/products", async (req, res) => {
@@ -91,4 +96,3 @@ app.delete("/products", async (req, res) => {
 app.listen(3000, () => {
   console.log("butts on port 3000");
 });
-
