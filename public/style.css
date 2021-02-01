@@ -328,6 +328,122 @@ p {
   font-weight: bolder;
 }
 
+/* ====================== Cart ======================== */
+
+.content-section {
+  margin: 1em;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5em;
+  background-color: aliceblue;
+  border-radius: 5px; 
+}
+
+.cart-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.cart-column {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cart-row {
+  display: flex;
+}
+
+.cart-item {
+  width: 45%;
+}
+
+.cart-price {
+  width: 20%;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.cart-quantity {
+  width: 35%;
+}
+
+.cart-item-title {
+  color: #333;
+  margin-left: 0.5em;
+  font-size: 1.2em;
+}
+
+.cart-item-image {
+  width: 75px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.btn-danger {
+  color: white;
+  background-color: #eb5757;
+  border: none;
+  border-radius: 0.3em;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background-color: #cc4c4c;
+}
+
+.cart-quantity-input {
+  height: 34px;
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid #56ccf2;
+  background-color: #eee;
+  color: #333;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-right: 25px;
+}
+
+.cart-row:last-child {
+  border-bottom: 1px solid black;
+}
+
+.cart-row:last-child .cart-column {
+  border: none;
+}
+
+.cart-total {
+  text-align: end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.cart-total-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: black;
+  margin-right: 20px;
+}
+
+.cart-total-price {
+  color: #333;
+  font-size: 1.1em;
+}
+
+.btn-purchase {
+  display: block;
+  margin: 40px auto 80px auto;
+  font-size: 1.75em;
+}
+
 /* ====================== MQ ======================== */
 
 /* for smaller than 480px */
@@ -403,7 +519,7 @@ p {
 /* ========== playing with button styles ========== */
 /* based on code pen Wiggly Jelly Button by Tom Rts */
 
-.buy-button-store, .details-button-store {
+.cart-button-store, .details-button-store {
   font-family: 'Montserrat', Helvetica, sans-serif;
   color: #222;
   background:  rgb(206, 141, 122);
@@ -416,20 +532,20 @@ p {
 }
 
 /* Hover state animation applied here */
-.buy-button-store:hover, .details-button-store:hover  { 
+.cart-button-store:hover, .details-button-store:hover  { 
   -webkit-animation: hover 1200ms linear 2 alternate;
   animation: hover 1200ms linear 2 alternate;
 }
 
 /* Active state animation applied here */
-.buy-button-store:active, .details-button-store:active {
+.cart-button-store:active, .details-button-store:active {
   -webkit-animation: active 1200ms ease 1 alternate;
   animation: active 1200ms ease 1 alternate; 
   background: rgb(206, 141, 122);
 }
 
-.buy-button-store, .details-button-store:hover { background: rgb(206, 141, 122); }
-.buy-button-store:active, .details-button-store:active { background: rgb(206, 141, 122); }
+.cart-button-store, .details-button-store:hover { background: rgb(206, 141, 122); }
+.cart-button-store:active, .details-button-store:active { background: rgb(206, 141, 122); }
 
 /* Active state animation keyframes below */
 

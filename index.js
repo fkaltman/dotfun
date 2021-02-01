@@ -64,9 +64,10 @@ app.get("/player", (req, res) => {
 });
 
 app.get("/modal", async (req, res) => {
-  const products = await Product.find({}).sort({ price: -1 });
+  const products = await Product.find();
   res.send({ products });
 });
+
 
 // ================================= DB PAGE ===================================== 
 
