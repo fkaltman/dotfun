@@ -25,23 +25,23 @@
   </div>
 
   <footer>
-
-  <section class="container content-section">
-    <h2 class="section-header">CART</h2>
-    <div class="cart-row">
-      <span class="cart-item cart-header cart-column">ITEM</span>
-      <span class="cart-price cart-header cart-column">PRICE</span>
-      <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-    </div>
-    <div class="cart-items"></div>
-    <div class="cart-total">
-      <strong class="cart-total-title">Total</strong>
-      <span class="cart-total-price">$0</span>
-    </div>
-    <button class="btn btn-primary btn-purchase" type="button">
-      Checkout
-    </button>
-  </section>
+<section class="container content-section">
+  <h2 class="section-header">CART</h2>
+  <div class="cart-row">
+    <span class="cart-item cart-header cart-column">ITEM</span>
+    <span class="cart-price cart-header cart-column">PRICE</span>
+    <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+  </div>
+  <div class="cart-items"></div>
+  <div class="cart-total">
+    <strong class="cart-total-title">Total</strong>
+    <span class="cart-total-price">$0</span>
+  </div>
+  <button class="btn btn-primary btn-purchase" >
+    Checkout
+  </button>
+</section>
+  
 
   </footer>
 
@@ -74,17 +74,9 @@ function ready() {
 
   document
     .getElementsByClassName("btn-purchase")[0]
-    .addEventListener("click", purchaseClicked);
-}
-
-function purchaseClicked() {
-  alert("Thank you for your purchase");
-  let cartItems = document.getElementsByClassName("cart-items")[0];
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild);
-  }
-  updateCartTotal();
-}
+    .addEventListener("click", purchaseClicked('/products/checkout', { price: cartTotal })
+  .then(data => {console.log(data)})
+  )
 
 function removeCartItem(event) {
   let buttonClicked = event.target;
@@ -139,10 +131,12 @@ function addItemToCart(title, price, imageSrc) {
     .addEventListener("change", quantityChanged);
 }
 
+let cartTotal;
+
 function updateCartTotal() {
   let cartItemContainer = document.getElementsByClassName("cart-items")[0];
   let cartRows = cartItemContainer.getElementsByClassName("cart-row");
-  let total = 0;
+  cartTotal = 0;
   for (let i = 0; i < cartRows.length; i++) {
     let cartRow = cartRows[i];
     let priceElement = cartRow.getElementsByClassName("cart-price")[0];
@@ -151,15 +145,33 @@ function updateCartTotal() {
     )[0];
     let price = parseFloat(priceElement.innerText.replace("$", ""));
     let quantity = quantityElement.value;
-    total = total + price * quantity;
+    cartTotal = cartTotal + price * quantity;
   }
-  total = Math.round(total * 100) / 100;
+  cartTotal = Math.round(cartTotal * 100) / 100;
   document.getElementsByClassName("cart-total-price")[0].innerText =
-    "$" + total;
+    "$" + cartTotal;
+}
+
+async function purchaseClicked(url = '', data = {}) {
+  // Example POST method implementation:
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
 }
 
 
-    const details = document.querySelectorAll(".details-button-store")
+    const details = document.querySelectorAll(".details-button-store");
 
     let obj;
 
