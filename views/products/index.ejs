@@ -78,12 +78,47 @@ function ready() {
 }
 
 function purchaseClicked() {
-  alert("Thank you for your purchase");
-  let cartItems = document.getElementsByClassName("cart-items")[0];
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild);
+
+  collectCartContents();
+  console.log(cartContents);
+ 
+  
+}
+
+// developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+
+let cartContents = {
+    addItem: function addItem(item) {
+    [].push.call(this, item)
+    }
+}
+
+
+function collectCartContents(){
+
+    // constructor vibes
+    
+    function cartItem(title, price, quantity){
+    this.title = title;
+    this.price = price;
+    this.quantity = quantity;
   }
-  updateCartTotal();
+
+
+    let cartItemContainer = document.getElementsByClassName("cart-items")[0];
+    let cartRows = cartItemContainer.getElementsByClassName("cart-row");
+    for (let i = 0; i < cartRows.length; i++) {
+    let cartRow = cartRows[i];
+    let titleElement = cartRow.getElementsByClassName("cart-item-title")[0];
+    let priceElement = cartRow.getElementsByClassName("cart-price")[0];
+    let quantityElement = cartRow.getElementsByClassName(
+      "cart-quantity-input"
+    )[0];
+    let title = titleElement.innerText;
+    let price = parseFloat(priceElement.innerText.replace("$", ""));
+    let quantity = quantityElement.value;
+    cartContents.addItem(new cartItem(title, price, quantity));
+  }
 }
 
 function removeCartItem(event) {
@@ -157,6 +192,9 @@ function updateCartTotal() {
   document.getElementsByClassName("cart-total-price")[0].innerText =
     "$" + total;
 }
+
+
+
 
 
     const details = document.querySelectorAll(".details-button-store")
