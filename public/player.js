@@ -8,8 +8,8 @@ function play(e) {
   audioPlayer.play();
 }
 
-for (let i = 0; i < tracks.length; i++) {
-  tracks[i].addEventListener("click", play);
+for (track of tracks) {
+  track.addEventListener("click", play);
 }
 
 function playNext(e) {

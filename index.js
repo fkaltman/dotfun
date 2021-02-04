@@ -68,6 +68,10 @@ app.get("/modal", async (req, res) => {
   res.send({ products });
 });
 
+app.post("/products/checkout", async (req, res) => {
+  console.log(req.body);
+  res.render("products/checkout");
+});
 
 // ================================= DB PAGE ===================================== 
 
