@@ -257,7 +257,7 @@ ul {
   flex: 50%;
 } */
 
-.buy-button-store, .details-button-store {
+.cart-button-store, .details-button-store {
   font-weight:500;
   padding: 4px 8px;
   margin: 2px;
@@ -438,7 +438,7 @@ p {
   font-size: 1.1em;
 }
 
-.btn-purchase {
+.btn-primary{
   display: block;
   margin: 40px auto 80px auto;
   font-size: 1.75em;
