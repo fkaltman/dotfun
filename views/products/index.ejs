@@ -69,258 +69,265 @@ if (document.readyState == "loading") {
 }
 
 function ready() {
+
+  const productsContainer = document.querySelector("#store-products")
+
   const removeCartItemButtons = document.getElementsByClassName("btn-danger");
-  for (let i = 0; i < removeCartItemButtons.length; i++) {
-    let button = removeCartItemButtons[i];
-    button.addEventListener("click", removeCartItem);
+  for (removeCartItemButton of removeCartItemButtons) {
+    removeCartItemButton.addEventListener("click", removeCartItem);
   }
 
   const quantityInputs = document.getElementsByClassName("cart-quantity-input");
-  for (let i = 0; i < quantityInputs.length; i++) {
-    let input = quantityInputs[i];
-    input.addEventListener("change", quantityChanged);
+  for (quantityInput of quantityInputs) {
+    quantityInput.addEventListener("change", quantityChanged);
   }
 
   const addToCartButtons = document.getElementsByClassName("cart-button-store");
-  for (let i = 0; i < addToCartButtons.length; i++) {
-    let button = addToCartButtons[i];
-    button.addEventListener("click", addToCartClicked);
+  for (addToCartButton of addToCartButtons) {
+    addToCartButton.addEventListener("click", addToCartClicked);
   }
 
-  const checkoutButton = document.getElementsByClassName("btn-purchase")[0]
-    
-  checkoutButton.addEventListener("click", purchaseClicked)
+  const details = document.querySelectorAll(".details-button-store");
+  for (let detail of details) {
+    detail.addEventListener("click", showModal);
+  }
 
+  const paypalButtonContainer = document.querySelector("#paypal-button-container")
 
-  const keepShoppingButton = document.getElementsByClassName("btn-keep-shopping")[0]
-  
+  const checkoutButton = document.getElementsByClassName("btn-purchase")[0];
+
+  checkoutButton.addEventListener("click", purchaseClicked);
+
+  const keepShoppingButton = document.getElementsByClassName(
+    "btn-keep-shopping"
+  )[0];
+
   keepShoppingButton.addEventListener("click", keepShoppingClicked);
 
   keepShoppingButton.style.display = "none";
 
-}
+  function keepShoppingClicked() {
+    cartContents.splice(0, cartContents.length);
+    console.log(cartContents);
 
+    productsContainer.style.display = "flex";
 
+    checkoutButton.style.display = "block";
 
-function keepShoppingClicked(){
-  cartContents.splice(0, cartContents.length);
-  console.log(cartContents);
-  document.getElementsByClassName("btn-purchase")[0].style.display = "block";
-  document.getElementsByClassName("btn-keep-shopping")[0].style.display = "none";
-  
-}
+    keepShoppingButton.style.display = "none";
 
+    for (removeCartItemButton of removeCartItemButtons) {
+      removeCartItemButton.style.display = "block";
+    }
 
-function purchaseClicked() {
+    for (quantityInput of quantityInputs) {
+      quantityInput.addEventListener("change", quantityChanged);
+    }
 
+    for (addToCartButton of addToCartButtons) {
+      addToCartButton.addEventListener("click", addToCartClicked);
+    }
 
-  collectCartContents();
-  console.log(cartContents);
+    for (let detail of details) {
+      detail.addEventListener("click", showModal);
+    }
+
+    paypalButtonContainer.innerHTML = "";
+
+  }
+
+  function purchaseClicked() {
+    collectCartContents();
+    console.log(cartContents);
 
     function initPayPalButton() {
-    paypal
-      .Buttons({
-        style: {
-          shape: "rect",
-          color: "gold",
-          layout: "vertical",
-          label: "paypal",
-        },
+      paypal
+        .Buttons({
+          style: {
+            shape: "rect",
+            color: "gold",
+            layout: "vertical",
+            label: "paypal",
+          },
 
-        createOrder: function (data, actions) {
-          return actions.order.create({
-            purchase_units: [
-              {
-                description: "Cart Total",
-                amount: { currency_code: "USD", value: 100},
-              },
-            ],
-          });
-        },
+          createOrder: function (data, actions) {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  description: "Cart Total",
+                  amount: { currency_code: "USD", value: 100 },
+                },
+              ],
+            });
+          },
 
-        onApprove: function (data, actions) {
-          return actions.order.capture().then(function (details) {
-            alert(
-              "Transaction completed by " +
-                details.payer.name.given_name +
-                "!"
-            );
-          });
-        },
+          onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+              alert(
+                "Transaction completed by " +
+                  details.payer.name.given_name +
+                  "!"
+              );
+            });
+          },
 
-        onError: function (err) {
-          console.log(err);
-        },
-      })
-      .render("#paypal-button-container");
+          onError: function (err) {
+            console.log(err);
+          },
+        })
+        .render("#paypal-button-container");
     }
-  
-  initPayPalButton();
- 
-  document.getElementsByClassName("btn-purchase")[0].style.display = "none";
-  
-  document.getElementsByClassName("btn-keep-shopping")[0].style.display = "block";
 
-  const removeCartItemButtons = document.getElementsByClassName("btn-danger");
-  for (let i = 0; i < removeCartItemButtons.length; i++) {
-    let button = removeCartItemButtons[i];
-    button.removeEventListener("click", removeCartItem);
+    initPayPalButton();
+
+    productsContainer.style.display = "none";
+
+    checkoutButton.style.display = "none";
+
+    keepShoppingButton.style.display = "block";
+
+    for (removeCartItemButton of removeCartItemButtons) {
+      removeCartItemButton.style.display = "none";
+    }
+
+    for (quantityInput of quantityInputs) {
+      quantityInput.removeEventListener("change", quantityChanged);
+    }
+
+    for (addToCartButton of addToCartButtons) {
+      addToCartButton.removeEventListener("click", addToCartClicked);
+    }
+
+    for (let detail of details) {
+      detail.removeEventListener("click", showModal);
+    }
   }
 
-  const quantityInputs = document.getElementsByClassName("cart-quantity-input");
-  for (let i = 0; i < quantityInputs.length; i++) {
-    let input = quantityInputs[i];
-    input.removeEventListener("change", quantityChanged);
-  }
+  // developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
 
-  const addToCartButtons = document.getElementsByClassName("cart-button-store");
-  for (let i = 0; i < addToCartButtons.length; i++) {
-    let button = addToCartButtons[i];
-    button.removeEventListener("click", addToCartClicked);
-  }
-  
-}
+  let cartContents = [];
 
-// developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
-
-let cartContents = [];
-
-
-function collectCartContents(){
-
+  function collectCartContents() {
     // constructor vibes
-    
-    function cartItem(title, price, quantity){
-    this.title = title;
-    this.price = price;
-    this.quantity = quantity;
-  }
 
+    function cartItem(title, price, quantity) {
+      this.title = title;
+      this.price = price;
+      this.quantity = quantity;
+    }
 
     let cartItemContainer = document.getElementsByClassName("cart-items")[0];
     let cartRows = cartItemContainer.getElementsByClassName("cart-row");
     for (let i = 0; i < cartRows.length; i++) {
-    let cartRow = cartRows[i];
-    let titleElement = cartRow.getElementsByClassName("cart-item-title")[0];
-    let priceElement = cartRow.getElementsByClassName("cart-price")[0];
-    let quantityElement = cartRow.getElementsByClassName(
-      "cart-quantity-input"
-    )[0];
-    let title = titleElement.innerText;
-    let price = parseFloat(priceElement.innerText.replace("$", ""));
-    let quantity = quantityElement.value;
-    cartContents.push(new cartItem(title, price, quantity));
-  }
-}
-
-function removeCartItem(event) {
-  let buttonClicked = event.target;
-  buttonClicked.parentElement.parentElement.remove();
-  updateCartTotal();
-}
-
-function quantityChanged(event) {
-  let input = event.target;
-  if (isNaN(input.value) || input.value <= 0) {
-    input.value = 1;
-  }
-  updateCartTotal();
-}
-
-function addToCartClicked(event) {
-  let title = `${this.parentElement.children[3].innerText}`;
-  let price = `${this.parentElement.children[4].innerText}`;
-  let imageSrc = `${this.parentElement.children[1].children[0].src}`;
-  addItemToCart(title, price, imageSrc);
-  updateCartTotal();
-}
-
-function addItemToCart(title, price, imageSrc) {
-  let cartRow = document.createElement("div");
-  cartRow.classList.add("cart-row");
-  let cartItems = document.getElementsByClassName("cart-items")[0];
-  let cartItemNames = cartItems.getElementsByClassName("cart-item-title");
-  for (let i = 0; i < cartItemNames.length; i++) {
-    if (cartItemNames[i].innerText == title) {
-      alert("This item is already added to the cart");
-      return;
+      let cartRow = cartRows[i];
+      let titleElement = cartRow.getElementsByClassName("cart-item-title")[0];
+      let priceElement = cartRow.getElementsByClassName("cart-price")[0];
+      let quantityElement = cartRow.getElementsByClassName(
+        "cart-quantity-input"
+      )[0];
+      let title = titleElement.innerText;
+      let price = parseFloat(priceElement.innerText.replace("$", ""));
+      let quantity = quantityElement.value;
+      cartContents.push(new cartItem(title, price, quantity));
     }
   }
-  const cartRowContents = `
-        <div class="cart-item cart-column">
-            <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
-            <span class="cart-item-title">${title}</span>
-        </div>
-        <span class="cart-price cart-column">${price}</span>
-        <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger" type="button">REMOVE</button>
-        </div>`;
-  cartRow.innerHTML = cartRowContents;
-  cartItems.append(cartRow);
-  cartRow
-    .getElementsByClassName("btn-danger")[0]
-    .addEventListener("click", removeCartItem);
-  cartRow
-    .getElementsByClassName("cart-quantity-input")[0]
-    .addEventListener("change", quantityChanged);
-}
 
-let cartTotal;
-
-function updateCartTotal() {
-  let cartItemContainer = document.getElementsByClassName("cart-items")[0];
-  let cartRows = cartItemContainer.getElementsByClassName("cart-row");
-  let cartTotal = 0;
-  for (let i = 0; i < cartRows.length; i++) {
-    let cartRow = cartRows[i];
-    let priceElement = cartRow.getElementsByClassName("cart-price")[0];
-    let quantityElement = cartRow.getElementsByClassName(
-      "cart-quantity-input"
-    )[0];
-    let price = parseFloat(priceElement.innerText.replace("$", ""));
-    let quantity = quantityElement.value;
-    cartTotal = cartTotal + price * quantity;
+  function removeCartItem(event) {
+    let buttonClicked = event.target;
+    buttonClicked.parentElement.parentElement.remove();
+    updateCartTotal();
   }
-  cartTotal = Math.round(cartTotal * 100) / 100;
-  document.getElementsByClassName("cart-total-price")[0].innerText =
-    "$" + cartTotal;
 
-  
-
-}
-
-
-
-
-
-    const details = document.querySelectorAll(".details-button-store")
-
-    let obj;
-
-    function getProducts() {fetch('/modal')
-      .then(res => res.json())
-      .then(data => obj = data)
+  function quantityChanged(event) {
+    let input = event.target;
+    if (isNaN(input.value) || input.value <= 0) {
+      input.value = 1;
     }
+    updateCartTotal();
+  }
 
-    function showModal(e){
-          let title = `${this.parentElement.children[3].innerText}`;
-          for (let i = 0; i < obj.products.length; i++){
-            if (title == obj.products[i].title){
-              Swal.fire({
-              title: obj.products[i].subtitle,
-            //text: `${this.parentElement.children[4].innerText}`,
-            }) 
-          }
-        } 
+  function addToCartClicked(event) {
+    let title = `${this.parentElement.children[3].innerText}`;
+    let price = `${this.parentElement.children[4].innerText}`;
+    let imageSrc = `${this.parentElement.children[1].children[0].src}`;
+    addItemToCart(title, price, imageSrc);
+    updateCartTotal();
+  }
+
+  function addItemToCart(title, price, imageSrc) {
+    let cartRow = document.createElement("div");
+    cartRow.classList.add("cart-row");
+    let cartItems = document.getElementsByClassName("cart-items")[0];
+    let cartItemNames = cartItems.getElementsByClassName("cart-item-title");
+    for (let i = 0; i < cartItemNames.length; i++) {
+      if (cartItemNames[i].innerText == title) {
+        alert("This item is already added to the cart");
+        return;
       }
+    }
+    const cartRowContents = `
+          <div class="cart-item cart-column">
+              <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
+              <span class="cart-item-title">${title}</span>
+          </div>
+          <span class="cart-price cart-column">${price}</span>
+          <div class="cart-quantity cart-column">
+              <input class="cart-quantity-input" type="number" value="1">
+              <button class="btn btn-danger" type="button">REMOVE</button>
+          </div>`;
+    cartRow.innerHTML = cartRowContents;
+    cartItems.append(cartRow);
+    cartRow
+      .getElementsByClassName("btn-danger")[0]
+      .addEventListener("click", removeCartItem);
+    cartRow
+      .getElementsByClassName("cart-quantity-input")[0]
+      .addEventListener("change", quantityChanged);
+  }
 
-    window.addEventListener('DOMContentLoaded', getProducts);
+  let cartTotal;
 
-    for (let detail of details) {
-      detail.addEventListener('click', showModal)
-    };
+  function updateCartTotal() {
+    let cartItemContainer = document.getElementsByClassName("cart-items")[0];
+    let cartRows = cartItemContainer.getElementsByClassName("cart-row");
+    let cartTotal = 0;
+    for (let i = 0; i < cartRows.length; i++) {
+      let cartRow = cartRows[i];
+      let priceElement = cartRow.getElementsByClassName("cart-price")[0];
+      let quantityElement = cartRow.getElementsByClassName(
+        "cart-quantity-input"
+      )[0];
+      let price = parseFloat(priceElement.innerText.replace("$", ""));
+      let quantity = quantityElement.value;
+      cartTotal = cartTotal + price * quantity;
+    }
+    cartTotal = Math.round(cartTotal * 100) / 100;
+    document.getElementsByClassName("cart-total-price")[0].innerText =
+      "$" + cartTotal;
+  }
 
+  let obj;
+
+  function getProducts() {
+    fetch("/modal")
+      .then((res) => res.json())
+      .then((data) => (obj = data));
+  }
+
+  function showModal(e) {
+    let title = `${this.parentElement.children[3].innerText}`;
+    for (let i = 0; i < obj.products.length; i++) {
+      if (title == obj.products[i].title) {
+        Swal.fire({
+          title: obj.products[i].subtitle,
+          //text: `${this.parentElement.children[4].innerText}`,
+        });
+      }
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", getProducts);
+}
 
   
 </script>
