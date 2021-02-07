@@ -116,20 +116,12 @@ function ready() {
 
     keepShoppingButton.style.display = "none";
 
-    for (removeCartItemButton of removeCartItemButtons) {
+    for (removeCartItemButton of removeCartItemButtons){
       removeCartItemButton.style.display = "block";
     }
 
-    for (quantityInput of quantityInputs) {
-      quantityInput.addEventListener("change", quantityChanged);
-    }
-
-    for (addToCartButton of addToCartButtons) {
-      addToCartButton.addEventListener("click", addToCartClicked);
-    }
-
-    for (let detail of details) {
-      detail.addEventListener("click", showModal);
+    for (quantityInput of quantityInputs){
+      quantityInput.readOnly = "";
     }
 
     paypalButtonContainer.innerHTML = "";
@@ -186,21 +178,14 @@ function ready() {
 
     keepShoppingButton.style.display = "block";
 
-    for (removeCartItemButton of removeCartItemButtons) {
+    for (quantityInput of quantityInputs){
+      quantityInput.readOnly = "readonly";
+    }
+
+    for (removeCartItemButton of removeCartItemButtons){
       removeCartItemButton.style.display = "none";
     }
 
-    for (quantityInput of quantityInputs) {
-      quantityInput.removeEventListener("change", quantityChanged);
-    }
-
-    for (addToCartButton of addToCartButtons) {
-      addToCartButton.removeEventListener("click", addToCartClicked);
-    }
-
-    for (let detail of details) {
-      detail.removeEventListener("click", showModal);
-    }
   }
 
   // developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
