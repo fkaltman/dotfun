@@ -35,7 +35,11 @@
     </div>
     <div class="cart-items"></div>
     <div class="cart-total">
-      <strong class="cart-total-title">Total</strong>
+      <strong class="cart-total-title">subtotal</strong>
+      <br>
+      <strong class="cart-total-title shipping">shipping</strong>
+      <br>
+      <strong class="cart-total-title total">total</strong>
       <span class="cart-total-price">$0</span>
     </div>
     <button class="btn btn-primary btn-purchase" type="button">
@@ -131,6 +135,16 @@ function ready() {
   function purchaseClicked() {
     collectCartContents();
     console.log(cartContents);
+    // console.log(cartSubtotal);
+
+    let shipping = 0;
+    
+    for (let cartContent of cartContents){
+      cartContent.title.includes("Vinyl") ? shipping = 5 : shipping = 3;
+    }
+
+    let cartTotal = `${cartSubtotal + shipping}`;
+
 
     function initPayPalButton() {
       paypal
@@ -220,7 +234,7 @@ function ready() {
   function removeCartItem(event) {
     let buttonClicked = event.target;
     buttonClicked.parentElement.parentElement.remove();
-    updateCartTotal();
+    updateCartSubtotal();
   }
 
   function quantityChanged(event) {
@@ -228,7 +242,7 @@ function ready() {
     if (isNaN(input.value) || input.value <= 0) {
       input.value = 1;
     }
-    updateCartTotal();
+    updateCartSubtotal();
   }
 
   function addToCartClicked(event) {
@@ -236,7 +250,7 @@ function ready() {
     let price = `${this.parentElement.children[4].innerText}`;
     let imageSrc = `${this.parentElement.children[1].children[0].src}`;
     addItemToCart(title, price, imageSrc);
-    updateCartTotal();
+    updateCartSubtotal();
   }
 
   function addItemToCart(title, price, imageSrc) {
@@ -270,12 +284,12 @@ function ready() {
       .addEventListener("change", quantityChanged);
   }
 
-  let cartTotal;
+  let cartSubtotal;
 
-  function updateCartTotal() {
+  function updateCartSubtotal() {
     let cartItemContainer = document.getElementsByClassName("cart-items")[0];
     let cartRows = cartItemContainer.getElementsByClassName("cart-row");
-    let cartTotal = 0;
+    cartSubtotal = 0;
     for (let i = 0; i < cartRows.length; i++) {
       let cartRow = cartRows[i];
       let priceElement = cartRow.getElementsByClassName("cart-price")[0];
@@ -284,11 +298,11 @@ function ready() {
       )[0];
       let price = parseFloat(priceElement.innerText.replace("$", ""));
       let quantity = quantityElement.value;
-      cartTotal = cartTotal + price * quantity;
+      cartSubtotal = cartSubtotal + price * quantity;
     }
-    cartTotal = Math.round(cartTotal * 100) / 100;
+    cartSubtotal = Math.round(cartSubtotal * 100) / 100;
     document.getElementsByClassName("cart-total-price")[0].innerText =
-      "$" + cartTotal;
+      "$" + cartSubtotal;
   }
 
   let obj;
