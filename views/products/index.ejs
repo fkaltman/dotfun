@@ -35,14 +35,18 @@
     </div>
     <div class="cart-items"></div>
     <div class="cart-total">
-      <strong class="cart-total-title">subtotal</strong>
+      <strong class="cart-total-title subtotal">subtotal</strong>
+      <span class="cart-subtotal-price">$0</span>
+
       <br>
       <strong class="cart-total-title shipping">shipping</strong>
+      <span class="cart-shipping-price">$0</span>
+
       <br>
       <strong class="cart-total-title total">total</strong>
       <span class="cart-total-price">$0</span>
     </div>
-    <button class="btn btn-primary btn-purchase" type="button">
+    <button class="btn btn-primary btn-checkout" type="button">
       Checkout
     </button>
     <button class="btn btn-primary btn-keep-shopping" type="button">
@@ -73,8 +77,7 @@ if (document.readyState == "loading") {
 }
 
 function ready() {
-
-  const productsContainer = document.querySelector("#store-products")
+  const productsContainer = document.querySelector("#store-products");
 
   const removeCartItemButtons = document.getElementsByClassName("btn-danger");
   for (removeCartItemButton of removeCartItemButtons) {
@@ -96,11 +99,13 @@ function ready() {
     detail.addEventListener("click", showModal);
   }
 
-  const paypalButtonContainer = document.querySelector("#paypal-button-container")
+  const paypalButtonContainer = document.querySelector(
+    "#paypal-button-container"
+  );
 
-  const checkoutButton = document.getElementsByClassName("btn-purchase")[0];
+  const checkoutButton = document.getElementsByClassName("btn-checkout")[0];
 
-  checkoutButton.addEventListener("click", purchaseClicked);
+  checkoutButton.addEventListener("click", checkoutClicked);
 
   const keepShoppingButton = document.getElementsByClassName(
     "btn-keep-shopping"
@@ -111,7 +116,6 @@ function ready() {
   keepShoppingButton.style.display = "none";
 
   function keepShoppingClicked() {
-    cartContents.splice(0, cartContents.length);
     console.log(cartContents);
 
     productsContainer.style.display = "flex";
@@ -120,32 +124,18 @@ function ready() {
 
     keepShoppingButton.style.display = "none";
 
-    for (removeCartItemButton of removeCartItemButtons){
+    for (removeCartItemButton of removeCartItemButtons) {
       removeCartItemButton.style.display = "block";
     }
 
-    for (quantityInput of quantityInputs){
+    for (quantityInput of quantityInputs) {
       quantityInput.readOnly = "";
     }
 
     paypalButtonContainer.innerHTML = "";
-
   }
 
-  function purchaseClicked() {
-    collectCartContents();
-    console.log(cartContents);
-    // console.log(cartSubtotal);
-
-    let shipping = 0;
-    
-    for (let cartContent of cartContents){
-      cartContent.title.includes("Vinyl") ? shipping = 5 : shipping = 3;
-    }
-
-    let cartTotal = `${cartSubtotal + shipping}`;
-
-
+  function checkoutClicked() {  
     function initPayPalButton() {
       paypal
         .Buttons({
@@ -161,7 +151,7 @@ function ready() {
               purchase_units: [
                 {
                   description: "Cart Total",
-                  amount: { currency_code: "USD", value: 100 },
+                  amount: { currency_code: "USD", value: cartTotal },
                 },
               ],
             });
@@ -192,49 +182,19 @@ function ready() {
 
     keepShoppingButton.style.display = "block";
 
-    for (quantityInput of quantityInputs){
+    for (quantityInput of quantityInputs) {
       quantityInput.readOnly = "readonly";
     }
 
-    for (removeCartItemButton of removeCartItemButtons){
+    for (removeCartItemButton of removeCartItemButtons) {
       removeCartItemButton.style.display = "none";
-    }
-
-  }
-
-  // developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
-
-  let cartContents = [];
-
-  function collectCartContents() {
-    // constructor vibes
-
-    function cartItem(title, price, quantity) {
-      this.title = title;
-      this.price = price;
-      this.quantity = quantity;
-    }
-
-    let cartItemContainer = document.getElementsByClassName("cart-items")[0];
-    let cartRows = cartItemContainer.getElementsByClassName("cart-row");
-    for (let i = 0; i < cartRows.length; i++) {
-      let cartRow = cartRows[i];
-      let titleElement = cartRow.getElementsByClassName("cart-item-title")[0];
-      let priceElement = cartRow.getElementsByClassName("cart-price")[0];
-      let quantityElement = cartRow.getElementsByClassName(
-        "cart-quantity-input"
-      )[0];
-      let title = titleElement.innerText;
-      let price = parseFloat(priceElement.innerText.replace("$", ""));
-      let quantity = quantityElement.value;
-      cartContents.push(new cartItem(title, price, quantity));
     }
   }
 
   function removeCartItem(event) {
     let buttonClicked = event.target;
     buttonClicked.parentElement.parentElement.remove();
-    updateCartSubtotal();
+    updateCart();
   }
 
   function quantityChanged(event) {
@@ -242,7 +202,7 @@ function ready() {
     if (isNaN(input.value) || input.value <= 0) {
       input.value = 1;
     }
-    updateCartSubtotal();
+    updateCart();
   }
 
   function addToCartClicked(event) {
@@ -250,7 +210,7 @@ function ready() {
     let price = `${this.parentElement.children[4].innerText}`;
     let imageSrc = `${this.parentElement.children[1].children[0].src}`;
     addItemToCart(title, price, imageSrc);
-    updateCartSubtotal();
+    updateCart();
   }
 
   function addItemToCart(title, price, imageSrc) {
@@ -258,8 +218,8 @@ function ready() {
     cartRow.classList.add("cart-row");
     let cartItems = document.getElementsByClassName("cart-items")[0];
     let cartItemNames = cartItems.getElementsByClassName("cart-item-title");
-    for (let i = 0; i < cartItemNames.length; i++) {
-      if (cartItemNames[i].innerText == title) {
+    for (cartItemName of cartItemNames) {
+      if (cartItemName.innerText == title) {
         alert("This item is already added to the cart");
         return;
       }
@@ -284,25 +244,62 @@ function ready() {
       .addEventListener("change", quantityChanged);
   }
 
-  let cartSubtotal;
+  // let cartSubtotal = 0;
+  // let shipping = 0;
+  // let cartTotal = 0;
+  let cartContents = [];
 
-  function updateCartSubtotal() {
+  function updateCart() {
+    function cartItem(title, price, quantity) {
+      this.title = title;
+      this.price = price;
+      this.quantity = quantity;
+    }
+
+    cartContents.splice(0, cartContents.length);
+
     let cartItemContainer = document.getElementsByClassName("cart-items")[0];
     let cartRows = cartItemContainer.getElementsByClassName("cart-row");
     cartSubtotal = 0;
-    for (let i = 0; i < cartRows.length; i++) {
-      let cartRow = cartRows[i];
+    shipping = 0;
+    for (cartRow of cartRows) {
+      let titleElement = cartRow.getElementsByClassName("cart-item-title")[0];
       let priceElement = cartRow.getElementsByClassName("cart-price")[0];
       let quantityElement = cartRow.getElementsByClassName(
         "cart-quantity-input"
       )[0];
+      let title = titleElement.innerText;
       let price = parseFloat(priceElement.innerText.replace("$", ""));
       let quantity = quantityElement.value;
+      cartContents.push(new cartItem(title, price, quantity));
+      cartSubtotal = Math.round(cartSubtotal * 100) / 100;
       cartSubtotal = cartSubtotal + price * quantity;
+     
     }
-    cartSubtotal = Math.round(cartSubtotal * 100) / 100;
-    document.getElementsByClassName("cart-total-price")[0].innerText =
+
+    // for (let cartContent of cartContents) {
+    // cartContent.title.includes("Vinyl") ? shipping = 5 : shipping = 3;
+    // }
+
+    for (let cartContent of cartContents) {
+      if (cartContent.title.includes("Vinyl")) {
+        shipping = 5;
+        break;
+      } else {
+        shipping = 3;
+      }
+    }
+
+    cartTotal = `${cartSubtotal + shipping}`;
+
+    document.getElementsByClassName("cart-subtotal-price")[0].innerText =
       "$" + cartSubtotal;
+    document.getElementsByClassName("cart-shipping-price")[0].innerText =
+      "$" + shipping;
+    document.getElementsByClassName("cart-total-price")[0].innerText =
+      "$" + cartTotal;
+
+    console.log(cartContents);
   }
 
   let obj;
@@ -327,6 +324,7 @@ function ready() {
 
   window.addEventListener("DOMContentLoaded", getProducts);
 }
+
 
   
 </script>
