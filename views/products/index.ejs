@@ -136,6 +136,31 @@ function ready() {
   }
 
   function checkoutClicked() {  
+    let paypalItems = [];
+    let name = "";
+    let unit_amount = {
+      currency_code: "USD",
+      value: 0
+      };
+    let quantity = 0;
+
+    function paypalItem(name, unit_amount, quantity){
+      this.name = cartContent.title;
+      this.unit_amount = {
+      currency_code: "USD",
+      value: cartContent.price
+      };
+      this.quantity = cartContent.quantity;
+    }
+
+    for (cartContent of cartContents){
+      paypalItems.push(new paypalItem(name, unit_amount, quantity))
+    }
+ 
+
+    console.log(paypalItems);
+
+
     function initPayPalButton() {
       paypal
         .Buttons({
@@ -150,8 +175,19 @@ function ready() {
             return actions.order.create({
               purchase_units: [
                 {
-                  description: "Cart Total",
-                  amount: { currency_code: "USD", value: cartTotal },
+                  description: "Andrew Altman Merch",
+                  amount: { currency_code: "USD", value: cartTotal, breakdown: {
+                        item_total: {
+                            currency_code: "USD",
+                            value: cartSubtotal
+                        },
+                        shipping: {
+                            currency_code: "USD",
+                            value: shipping
+                        }
+                    } 
+                  },
+                  items: paypalItems
                 },
               ],
             });
@@ -175,6 +211,7 @@ function ready() {
     }
 
     initPayPalButton();
+
 
     productsContainer.style.display = "none";
 
@@ -276,10 +313,6 @@ function ready() {
       cartSubtotal = cartSubtotal + price * quantity;
      
     }
-
-    // for (let cartContent of cartContents) {
-    // cartContent.title.includes("Vinyl") ? shipping = 5 : shipping = 3;
-    // }
 
     for (let cartContent of cartContents) {
       if (cartContent.title.includes("Vinyl")) {
