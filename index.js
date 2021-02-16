@@ -4,11 +4,13 @@ const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const Product = require("./models/product");
+const product = require("./models/product");
 
 mongoose.connect("mongodb+srv://andrewaltman1:baseluvi@andrew-store.faqrq.mongodb.net/andrew-store?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;
@@ -30,6 +32,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.json());
 
 //loads the stylesheet
 app.use("/public", express.static("public"));
@@ -82,15 +85,32 @@ app.post("/products", async (req, res) => {
 });
 
 app.put("/products", async (req, res) => {
-  const { title } = req.body.product;
-  const product = await Product.findOneAndUpdate(
-    { title: title },
-    {
-      ...req.body.product,
-    }
-  );
-  res.redirect("/products");
+  cartContents = req.body;
+  for (cartContent of cartContents){
+    let title = cartContent.title;
+    let quantity = cartContent.quantity;
+    let product = await Product.findOne({ title: title });
+    let newStockQTY = `${product.stockQty - quantity}`;
+    await Product.findOneAndUpdate(
+          { title: title },
+          {
+            stockQty: newStockQTY
+          }
+        );
+  };
+  res.end();
 });
+
+// app.put("/products", async (req, res) => {
+//   const { title } = req.body.product;
+//   const product = await Product.findOneAndUpdate(
+//     { title: title },
+//     {
+//       ...req.body.product,
+//     }
+//   );
+//   res.redirect("/products");
+// });
 
 app.delete("/products", async (req, res) => {
   const { title } = req.body.product;
