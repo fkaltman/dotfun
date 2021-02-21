@@ -215,18 +215,10 @@ function ready() {
 
   let intervalId;
 
-  async function homeAlert(){
-    await (window.location = "/");
-    alert("Thank You");
-    clearInterval(intervalId);
-  }
-
   function sandboxCleared(){
   intervalId = setInterval(() => {let paypalSandbox = document.querySelector('.paypal-checkout-sandbox');
   if (paypalSandbox === null){
-    window.location = "/";
-    window.addEventListener('load',
-    console.log('page is fully loaded'));
+    window.location = "/products/thanks";
     clearInterval(intervalId);
   } else {}
  }, 500)

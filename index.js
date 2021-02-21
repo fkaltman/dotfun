@@ -49,6 +49,10 @@ app.get("/products", async (req, res) => {
   res.render("products/index", { products });
 });
 
+app.get("/products/thanks", (req, res) => {
+  res.render("products/thanks");
+});
+
 app.get("/products/new", (req, res) => {
   res.render("products/new");
 });
