@@ -98,6 +98,7 @@ app.put("/products", async (req, res) => {
           }
         );
   };
+  console.log("butts");
   res.end();
 });
 
