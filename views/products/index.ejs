@@ -201,13 +201,7 @@ function ready() {
           },
 
           onApprove: function (data, actions) {
-            return actions.order.capture().then(function (details) {
-              alert(
-                "Transaction completed by " +
-                  details.payer.name.given_name
-              );
-              checkoutDbUpdate();         
-            });
+            return actions.order.capture().then(checkoutDbUpdate());
           },
 
           onError: function (err) {
@@ -221,10 +215,18 @@ function ready() {
 
   let intervalId;
 
+  async function homeAlert(){
+    await (window.location = "/");
+    alert("Thank You");
+    clearInterval(intervalId);
+  }
+
   function sandboxCleared(){
   intervalId = setInterval(() => {let paypalSandbox = document.querySelector('.paypal-checkout-sandbox');
   if (paypalSandbox === null){
     window.location = "/";
+    window.addEventListener('load',
+    console.log('page is fully loaded'));
     clearInterval(intervalId);
   } else {}
  }, 500)
