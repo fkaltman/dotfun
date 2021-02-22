@@ -13,15 +13,17 @@
           <h2 class="title">
             <%= product.title %>
         </a></h2>
-        <!-- <p>
-          <%= product.subtitle %>
-        </p> -->
+         <p> <%# product.subtitle %> </p>
         <p>$<%= product.price %>
         </p>
-        <button class="cart-button-store" type="button">Cart</button>
         <button class="details-button-store">Details</button>
+        <% if (product.stockQty > 0) {%>
+          <button class="cart-button-store" type="button">Cart</button>
+        <%} else { %>
+          <button class="button-soldout" type="button">Sold Out</button>
+       <%}%>
       </div>
-      <%}%>
+  <%}%>
   </div>
 
   <footer>
@@ -77,6 +79,7 @@ if (document.readyState == "loading") {
 }
 
 function ready() {
+
   const productsContainer = document.querySelector("#store-products");
 
   const removeCartItemButtons = document.getElementsByClassName("btn-danger");
@@ -92,6 +95,11 @@ function ready() {
   const addToCartButtons = document.getElementsByClassName("cart-button-store");
   for (addToCartButton of addToCartButtons) {
     addToCartButton.addEventListener("click", addToCartClicked);
+  }
+
+  const soldoutButtons = document.getElementByClassName("button-soldout");
+  for (soldoutButton of soldoutButtons) {
+    
   }
 
   const details = document.querySelectorAll(".details-button-store");
