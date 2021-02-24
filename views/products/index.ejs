@@ -3,7 +3,6 @@
 
 
 <body>
-
   <div id="store-products">
     <% for (let product of products){%>
       <div>
@@ -13,14 +12,16 @@
           <h2 class="title">
             <%= product.title %>
         </a></h2>
-         <p> <%# product.subtitle %> </p>
+        <!-- <p>
+          <%= product.subtitle %>
+        </p> -->
         <p>$<%= product.price %>
         </p>
         <button class="details-button-store">Details</button>
         <% if (product.stockQty > 0) {%>
           <button class="cart-button-store" type="button">Cart</button>
         <%} else { %>
-          <button class="button-soldout" type="button">Sold Out</button>
+          <button class="cart-button-store" type="button">Sold Out</button>
        <%}%>
       </div>
   <%}%>
@@ -97,10 +98,16 @@ function ready() {
     addToCartButton.addEventListener("click", addToCartClicked);
   }
 
-  const soldoutButtons = document.getElementByClassName("button-soldout");
-  for (soldoutButton of soldoutButtons) {
-    
+  for (addToCartButton of addToCartButtons){
+    if (addToCartButton.innerText === "Sold Out"){
+      addToCartButton.parentElement.style.opacity = 1 ;
+      addToCartButton.parentElement.style.backgroundColor = "gainsboro";
+      addToCartButton.disabled = true;
+      
+
+    }
   }
+  
 
   const details = document.querySelectorAll(".details-button-store");
   for (let detail of details) {
@@ -122,6 +129,7 @@ function ready() {
   keepShoppingButton.addEventListener("click", keepShoppingClicked);
 
   keepShoppingButton.style.display = "none";
+
 
   function keepShoppingClicked() {
     console.log(cartContents);

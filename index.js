@@ -5,6 +5,8 @@ const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const Product = require("./models/product");
 const product = require("./models/product");
+const ExpressError = require('./utils/ExpressError');
+
 
 mongoose.connect("mongodb+srv://andrewaltman1:baseluvi@andrew-store.faqrq.mongodb.net/andrew-store?retryWrites=true&w=majority", {
   useNewUrlParser: true,
@@ -122,6 +124,16 @@ app.delete("/products", async (req, res) => {
   await Product.findOneAndDelete({ title: title });
   res.redirect("/products");
 });
+
+app.all('*', (req, res, next) => {
+  next(new ExpressError('Page Not Found', 404))
+})
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+  res.status(statusCode).render('error', { err })
+})
 
 app.listen(3000, () => {
   console.log("butts on port 3000");
