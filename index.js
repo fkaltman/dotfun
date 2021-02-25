@@ -6,6 +6,8 @@ const methodOverride = require("method-override");
 const Product = require("./models/product");
 const product = require("./models/product");
 const ExpressError = require('./utils/ExpressError');
+const catchAsync = require('./utils/catchAsync');
+
 
 
 mongoose.connect("mongodb+srv://andrewaltman1:baseluvi@andrew-store.faqrq.mongodb.net/andrew-store?retryWrites=true&w=majority", {
@@ -51,19 +53,6 @@ app.get("/products", async (req, res) => {
   res.render("products/index", { products });
 });
 
-app.get("/products/thanks", (req, res) => {
-  res.render("products/thanks");
-});
-
-app.get("/products/new", (req, res) => {
-  res.render("products/new");
-});
-
-app.get("/products/:id", async (req, res) => {
-  const product = await Product.findById(req.params.id);
-  res.render("products/show", { product });
-});
-
 app.get("/vinylmasters.html", (req, res) => {
   res.render("vinylmasters");
 });
@@ -75,19 +64,6 @@ app.get("/player", (req, res) => {
 app.get("/modal", async (req, res) => {
   const products = await Product.find();
   res.send({ products });
-});
-
-app.post("/products/checkout", async (req, res) => {
-  console.log(req.body);
-  res.render("products/checkout");
-});
-
-// ================================= DB PAGE ===================================== 
-
-app.post("/products", async (req, res) => {
-  const product = new Product(req.body.product);
-  await product.save();
-  res.redirect(`/products/${product.id}`);
 });
 
 app.put("/products", async (req, res) => {
@@ -108,22 +84,12 @@ app.put("/products", async (req, res) => {
   res.end();
 });
 
-// app.put("/products", async (req, res) => {
-//   const { title } = req.body.product;
-//   const product = await Product.findOneAndUpdate(
-//     { title: title },
-//     {
-//       ...req.body.product,
-//     }
-//   );
-//   res.redirect("/products");
-// });
-
-app.delete("/products", async (req, res) => {
-  const { title } = req.body.product;
-  await Product.findOneAndDelete({ title: title });
-  res.redirect("/products");
+app.get("/products/thanks", (req, res) => {
+  res.render("products/thanks");
 });
+
+// ================================= errors ===================================== 
+
 
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404))
@@ -138,3 +104,48 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("butts on port 3000");
 });
+
+
+
+
+
+
+
+// app.get("/products/new", (req, res) => {
+//   res.render("products/new");
+// });
+
+// app.post("/products/checkout", async (req, res) => {
+//   console.log(req.body);
+//   res.render("products/checkout");
+// });
+
+// app.get("/products/:id", async (req, res) => {
+//   const product = await Product.findById(req.params.id);
+//   res.render("products/show", { product });
+// });
+
+// ================================= DB PAGE ===================================== 
+
+// app.post("/products", async (req, res) => {
+//   const product = new Product(req.body.product);
+//   await product.save();
+//   res.redirect(`/products/${product.id}`);
+// });
+
+// app.put("/products", async (req, res) => {
+//   const { title } = req.body.product;
+//   const product = await Product.findOneAndUpdate(
+//     { title: title },
+//     {
+//       ...req.body.product,
+//     }
+//   );
+//   res.redirect("/products");
+// });
+
+// app.delete("/products", async (req, res) => {
+//   const { title } = req.body.product;
+//   await Product.findOneAndDelete({ title: title });
+//   res.redirect("/products");
+// });

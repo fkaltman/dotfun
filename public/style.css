@@ -77,6 +77,14 @@ hr {
   );
 }
 
+/* ====================== error ======================= */
+
+.error{
+  background-color: aliceblue;
+  margin: 10vh 20vw ;
+  padding: 200px 200px;
+}
+
 /* ====================== Player ======================= */
 
 #playlist {
