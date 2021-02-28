@@ -81,7 +81,7 @@ app.put("/products", async (req, res) => {
         );
   };
   console.log("butts");
-  res.end();
+  res.render("home");
 });
 
 app.get("/products/thanks", (req, res) => {
