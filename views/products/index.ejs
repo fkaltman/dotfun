@@ -206,9 +206,9 @@ function ready() {
             });
           },
         onApprove: function(data, actions) {
-          return actions.order.capture().then(() => {
-            checkoutDbUpdate();
-            window.location.href = "/products/thanks"});
+          return actions.order.capture().then(
+            checkoutDbUpdate()
+          );
         }
       }).render('#paypal-button-container'); 
 

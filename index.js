@@ -80,8 +80,7 @@ app.put("/products", async (req, res) => {
           }
         );
   };
-  console.log("butts");
-  res.render("home");
+  res.render("products/thanks");
 });
 
 app.get("/products/thanks", (req, res) => {
