@@ -53,7 +53,7 @@ app.get("/products", async (req, res) => {
   res.render("products/index", { products });
 });
 
-app.get("/vinylmasters.html", (req, res) => {
+app.get("/vinylmasters", (req, res) => {
   res.render("vinylmasters");
 });
 
