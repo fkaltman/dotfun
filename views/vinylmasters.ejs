@@ -21,8 +21,30 @@
       dynmaics than a CD master. I hope you enjoy them.
     </p>
     <div id="links">
-      <a class="listen" href="/player">Listen</a>
+      <a class="listen" href="#audioPlayerLink">Listen</a>
       <a class="download" href="public/audio/The Moment Vinyl Masters.zip">Download</a>
+    </div>
+    <div id="audioPlayerLink" style="display: none;">
+      <audio src="public/audio/01 The Moment.wav" controls id="audioPlayer">
+        Sorry, your browser doesn't support html5!
+      </audio>
+      <ul id="playlist">
+        <li class="song"><a href="public/audio/01 The Moment.wav">The Moment</a></li>
+        <li class="song">
+          <a href="public/audio/02 Bamboo School.wav">Bamboo School</a>
+        </li>
+        <li class="song">
+          <a href="public/audio/03 The Greatest Thing.wav">The Greatest Thing</a>
+        </li>
+        <li class="song"><a href="public/audio/04 Redwood.wav">Redwood</a></li>
+        <li class="song">
+          <a href="public/audio/05 The Last Supper.wav">The Last Supper</a>
+        </li>
+        <li class="song"><a href="public/audio/06 Be Prime.wav">Be Prime</a></li>
+        <li class="song">
+          <a href="public/audio/07 Repeat After Me.wav">Repeat After Me</a>
+        </li>
+      </ul>
     </div>
   </div>
   <script>
@@ -33,6 +55,9 @@
     const form = document.querySelector("#form");
     const codeInput = document.querySelector("#code-input");
     const theGoods = document.querySelector("#hires");
+    const listenLink = document.querySelector(".listen")
+    const audioPlayerLink = document.querySelector("#audioPlayerLink")
+    const thanks = document.querySelector("#thanks")
 
     const verifyCode = function (e) {
       let theCode = codeInput.value;
@@ -46,5 +71,36 @@
     };
 
     form.addEventListener("submit", verifyCode);
+
+    listenLink.addEventListener("click", () => {
+      audioPlayerLink.style.display = "block";
+      thanks.style.display = "none";
+    })
+
+    const audioPlayer = document.querySelector("#audioPlayer");
+    const playlist = document.querySelector("#playlist");
+    const tracks = document.querySelectorAll("a");
+
+
+    function play(e) {
+    e.preventDefault();
+     audioPlayer.src = this;
+     audioPlayer.play();
+    }
+
+    for (track of tracks) {
+     track.addEventListener("click", play);
+    }
+
+    function playNext(e) {
+     for (let i = 0; i < tracks.length; i++) {
+      if (tracks[i] == audioPlayer.src) {
+       audioPlayer.src = tracks[++i];
+       audioPlayer.play();
+     }
+    }
+  }
+
+    audioPlayer.addEventListener("ended", playNext);
   </script>
 </body>

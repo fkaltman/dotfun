@@ -83,10 +83,6 @@ app.put("/products", async (req, res) => {
   res.render("products/thanks");
 });
 
-app.get("/products/thanks", (req, res) => {
-  res.render("products/thanks");
-});
-
 // ================================= errors ===================================== 
 
 
