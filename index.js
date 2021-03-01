@@ -57,6 +57,10 @@ app.get("/vinylmasters", (req, res) => {
   res.render("vinylmasters");
 });
 
+app.get("/vinylmasters.html", (req, res) => {
+  res.render("vinylmasters");
+});
+
 app.get("/player", (req, res) => {
   res.render("player");
 });

@@ -21,10 +21,11 @@
       dynmaics than a CD master. I hope you enjoy them.
     </p>
     <div id="links">
+      <!-- <button class="listen">Listen</button> -->
       <a class="listen" href="#audioPlayerLink">Listen</a>
       <a class="download" href="public/audio/The Moment Vinyl Masters.zip">Download</a>
     </div>
-    <div id="audioPlayerLink" style="display: none;">
+    <div id="audioplayerContainter" style="display: none;">
       <audio src="public/audio/01 The Moment.wav" controls id="audioPlayer">
         Sorry, your browser doesn't support html5!
       </audio>
@@ -56,7 +57,7 @@
     const codeInput = document.querySelector("#code-input");
     const theGoods = document.querySelector("#hires");
     const listenLink = document.querySelector(".listen")
-    const audioPlayerLink = document.querySelector("#audioPlayerLink")
+    const audioplayerContainter = document.querySelector("#audioplayerContainter")
     const thanks = document.querySelector("#thanks")
 
     const verifyCode = function (e) {
@@ -73,13 +74,13 @@
     form.addEventListener("submit", verifyCode);
 
     listenLink.addEventListener("click", () => {
-      audioPlayerLink.style.display = "block";
+      audioplayerContainter.style.display = "block";
       thanks.style.display = "none";
     })
 
     const audioPlayer = document.querySelector("#audioPlayer");
     const playlist = document.querySelector("#playlist");
-    const tracks = document.querySelectorAll("a");
+    const tracks = document.querySelectorAll("li a");
 
 
     function play(e) {
