@@ -173,6 +173,9 @@ function ready() {
     for (cartContent of cartContents){
       paypalItems.push(new paypalItem(name, unit_amount, quantity))
     }
+
+    console.log(paypalItems);
+
  
     function checkoutDbUpdate(){
         fetch('/products', {
@@ -207,7 +210,9 @@ function ready() {
         onApprove: function(data, actions) {
           return actions.order.capture().then(
             checkoutDbUpdate()
-          );
+          ).then(() => {
+            window.location.href = "/products/thanks";
+          });
         }
       }).render('#paypal-button-container'); 
 
@@ -359,7 +364,7 @@ function ready() {
   }
 
   function showModal(e) {
-    let title = `${this.parentElement.children[3].innerText}`;
+    let title = `${this.parentElement.children[2].innerText}`;
     for (let i = 0; i < obj.products.length; i++) {
       if (title == obj.products[i].title) {
         Swal.fire({

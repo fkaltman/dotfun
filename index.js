@@ -84,9 +84,12 @@ app.put("/products", async (req, res) => {
           }
         );
   };
-  res.render("products/thanks");
+  res.end();
 });
 
+app.get("/products/thanks", (req, res) => {
+  res.render("products/thanks");
+});
 // ================================= errors ===================================== 
 
 
