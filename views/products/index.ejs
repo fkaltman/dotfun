@@ -208,11 +208,11 @@ function ready() {
             });
           },
         onApprove: function(data, actions) {
-          return actions.order.capture().then(
-            checkoutDbUpdate()
-          ).then(() => {
+          return actions.order.capture().then(() => {
             window.location.href = "/products/thanks";
-          });
+          }).then(
+            checkoutDbUpdate()
+          );
         }
       }).render('#paypal-button-container'); 
 
@@ -245,7 +245,7 @@ function ready() {
           if (title == obj.products[i].title && input.value > obj.products[i].stockQty){
           Swal.fire(
             `There are only ${obj.products[i].stockQty} left in stock`);
-          input.value = 1;
+          input.value = `${obj.products[i].stockQty}`;
           updateCart();
         } else if (input.value <= obj.products[i].stockQty){
           updateCart();

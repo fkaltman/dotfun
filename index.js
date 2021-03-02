@@ -48,10 +48,10 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/products", async (req, res) => {
+app.get("/products", catchAsync(async (req, res) => {
   const products = await Product.find({}).sort({ price: -1 });
   res.render("products/index", { products });
-});
+}));
 
 app.get("/vinylmasters", (req, res) => {
   res.render("vinylmasters");
@@ -65,12 +65,12 @@ app.get("/player", (req, res) => {
   res.render("player");
 });
 
-app.get("/modal", async (req, res) => {
+app.get("/modal", catchAsync(async (req, res) => {
   const products = await Product.find();
   res.send({ products });
-});
+}));
 
-app.put("/products", async (req, res) => {
+app.put("/products", catchAsync(async (req, res) => {
   cartContents = req.body;
   for (cartContent of cartContents){
     let title = cartContent.title;
@@ -85,7 +85,7 @@ app.put("/products", async (req, res) => {
         );
   };
   res.end();
-});
+}));
 
 app.get("/products/thanks", (req, res) => {
   res.render("products/thanks");
