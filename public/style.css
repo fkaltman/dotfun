@@ -57,7 +57,7 @@ header {
   align-content: center;
   margin: auto;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(134,145,137,255);
 }
 
 .header-right a {
@@ -88,7 +88,7 @@ hr {
 /* ====================== Player ======================= */
 
 #playlist {
-  margin-top: 3vh;
+  margin-top: 2vh;
 }
 
 .song a:link {
@@ -208,7 +208,7 @@ iframe {
 audio {
   margin: auto;
   width: 280px;
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 
 table {
@@ -235,9 +235,13 @@ ul {
 
 /* ====================== Store ======================= */
 
+.store{
+  background: white;
+}
+
 #store-products {
   font-family: "Roboto", sans-serif;
-  margin: 10vh 5vw;
+  margin: 2.5vh 5vw;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -251,7 +255,9 @@ ul {
 
 #store-products > div {
   width: 18vw;
+  height: 59vh;
   min-width: 220px;
+  min-height: 340px;
   height: 50vh;
   /* flex: 1 1 25%; */
   margin: 2vh 2vw;
@@ -267,6 +273,8 @@ ul {
 
 .cart-button-store, .details-button-store {
   font-weight:500;
+  width: 60%;
+  height: 10%;
   padding: 4px 8px;
   margin: 2px;
   background-color: rgb(206, 141, 122);
@@ -477,7 +485,7 @@ margin: auto;
   }
 
   .vinyl-master-title {
-    padding-top: 10vh;
+    padding-top: 3vh;
   }
 
   #form {
@@ -497,6 +505,36 @@ margin: auto;
 
   .socials {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 846px) and (min-width: 537px){
+  #store-products {
+    font-family: "Roboto", sans-serif;
+    margin: 2.5vh 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    background: rgba(64, 85, 70, 0.0);
+    border-radius: 2px;
+  }
+  
+  #store-products > div {
+    width: 18vw;
+    height: 59vh;
+    min-width: 220px;
+    min-height: 340px;
+    height: 50vh;
+    flex: 1 1 25%;
+    margin: 2vh 2vw;
+    border-radius: 2px;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,0.1),0 1.5px 6px rgba(0,0,0,0.1);
+    background-color: white;
+    padding: 0px 0px 10px 0px;
   }
 }
 
@@ -531,12 +569,12 @@ margin: auto;
   font-family: 'Montserrat', Helvetica, sans-serif;
   color: #222;
   background:  rgb(206, 141, 122);
-  border-radius: 100px;
-  padding: 4px 12px;
+  border-radius: 1px;
+  padding: 8px 24px;
   color: #fff;
   text-decoration: none;
   font-size: .9em;
-  margin: 0 8px;
+  margin: 8px 8px;
 }
 
 /* Hover state animation applied here */
