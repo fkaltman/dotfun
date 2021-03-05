@@ -304,7 +304,7 @@ ul {
 
 /* ====================== Product Page ======================== */
 
-img {
+/* img {
   height: auto;
   width: 50vw;
   border-radius: 5px;
@@ -330,11 +330,11 @@ margin: auto;
 /* border: 2px solid black; */
 }
 
-p {
+/* p {
   margin: 2vh 5vw;
   font-size: 0.9rem;
   font-weight: bolder;
-}
+} */ */
 
 /* ====================== Cart ======================== */
 

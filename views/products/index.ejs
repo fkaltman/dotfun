@@ -98,14 +98,12 @@ function ready() {
       addToCartButton.parentElement.style.opacity = 1 ;
       addToCartButton.parentElement.style.backgroundColor = "gainsboro";
       addToCartButton.disabled = true;
-      
-
     }
   }
   
 
   const details = document.querySelectorAll(".details-button-store");
-  for (let detail of details) {
+  for (detail of details) {
     detail.addEventListener("click", showModal);
   }
 
@@ -153,6 +151,7 @@ function ready() {
         "There is nothing in the cart"
       )
     } else {
+     
       let paypalItems = [];
       let name = "";
       let unit_amount = {
@@ -241,6 +240,7 @@ function ready() {
   function quantityChanged(event) {
     let input = event.target;
     let title = `${this.parentElement.parentElement.children[0].children[1].innerText}`;
+    // refactor?
     for (let i = 0; i < obj.products.length; i++){
           if (title == obj.products[i].title && input.value > obj.products[i].stockQty){
           Swal.fire(
@@ -356,7 +356,7 @@ function ready() {
   }
 
   let obj;
-
+  
   function getProducts() {
     fetch("/modal")
       .then((res) => res.json())
@@ -367,10 +367,9 @@ function ready() {
     let title = `${this.parentElement.children[2].innerText}`;
     for (let i = 0; i < obj.products.length; i++) {
       if (title == obj.products[i].title) {
-        Swal.fire({
-          title: obj.products[i].subtitle,
-          //text: `${this.parentElement.children[4].innerText}`,
-        });
+        Swal.fire(
+          `${obj.products[i].subtitle}`
+        );
       }
     }
   }
