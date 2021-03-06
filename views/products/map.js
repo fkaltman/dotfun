@@ -1,0 +1,1 @@
+const paypalItems = cartContents.map(cartContent => new paypalItems(name, unit_amount, quantity));
