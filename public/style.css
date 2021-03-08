@@ -254,11 +254,11 @@ ul {
 }
 
 #store-products > div {
-  width: 18vw;
-  height: 59vh;
+  width: 80vw;
+  /* width: 18vw; */
   min-width: 220px;
-  min-height: 340px;
-  height: 50vh;
+  max-width: 280px;
+  height: 360px;
   /* flex: 1 1 25%; */
   margin: 2vh 2vw;
   border-radius: 2px;
@@ -272,14 +272,29 @@ ul {
 } */
 
 .cart-button-store, .details-button-store {
+  font-family: 'Montserrat', Helvetica, sans-serif;
   font-weight:500;
+  font-size: .9em;
   width: 60%;
-  height: 10%;
-  padding: 4px 8px;
-  margin: 2px;
-  background-color: rgb(206, 141, 122);
-  border-radius: 4px;
-  color: rgb(27, 24, 24)
+  height: 8%;
+  padding: 4px 24px;
+  margin-top: 8px;
+  /* background-color: rgba(238, 163, 138, 0.5); */
+  background-color: rgba(136, 153, 135, 0.473);
+  border-radius: 2px;
+  color: rgb(27, 24, 24);
+}
+
+.store-item {
+  height: 400px;
+}
+
+.cart-button-store {
+margin-top: 5px;
+}
+
+.details-button-store {
+margin-top: 40px;
 }
 
 .product-thumb {
@@ -308,7 +323,14 @@ ul {
   background-color: transparent;
 }
 
+.swal2-title, #swal2-title {
+  color: rgb(109, 109, 109);
+  font-size: 16px;
+}
 
+.swal2-actions > .swal2-styled {
+  background-color: rgba(150, 170, 149, 0.993);
+}
 
 /* ====================== Product Page ======================== */
 
@@ -334,15 +356,11 @@ ul {
 margin: auto;
 }
 
-#buy-window {
-/* border: 2px solid black; */
-}
-
 /* p {
   margin: 2vh 5vw;
   font-size: 0.9rem;
   font-weight: bolder;
-} */ */
+} */
 
 /* ====================== Cart ======================== */
 
@@ -350,11 +368,11 @@ margin: auto;
   margin: 1em;
 }
 
-.container {
+.cart {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1.5em;
-  background-color: aliceblue;
+  background-color: rgba(211, 211, 211, 0.205);
   border-radius: 5px; 
 }
 
@@ -404,6 +422,8 @@ margin: auto;
 }
 
 .btn-danger {
+  padding:6px 9px;
+  margin:20px;
   color: white;
   background-color: #eb5757;
   border: none;
@@ -443,22 +463,37 @@ margin: auto;
 }
 
 .cart-total-title {
-  font-weight: bold;
-  font-size: 1.5em;
   color: black;
   margin-right: 20px;
+  display: inline-block;
 }
 
 .cart-total-price {
   color: #333;
   font-size: 1.1em;
+  display: inline-block;
 }
 
-.btn-primary{
-  display: block;
-  margin: 40px auto 80px auto;
-  font-size: 1.75em;
+.btn-checkout, .btn-keep-shopping {
+  margin: 30px auto;
 }
+
+  .cart-icon {
+    margin: 26px 0px;
+    opacity: 0.7;
+  }
+  
+  .btn-checkout, .btn-keep-shopping {
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-size: 0.9em;
+    width: 200px;
+    height: 8%;
+    padding: 6px 18px;
+    margin-bottom: 20px;
+    background-color: rgba(136, 153, 135, 0.473);
+    border-radius: 2px;
+    color: rgb(27, 24, 24);
+  }
 
 /* ====================== MQ ======================== */
 
@@ -516,26 +551,28 @@ margin: auto;
     flex-wrap: wrap;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: flex-start;
-    align-content: flex-start;
+    /* align-content: flex-start; */
     background: rgba(64, 85, 70, 0.0);
     border-radius: 2px;
   }
   
-  #store-products > div {
+  /* not sure if we need the below MQ since I 
+  locked the height of the card */
+
+
+  /* #store-products > div {
     width: 18vw;
-    height: 59vh;
     min-width: 220px;
-    min-height: 340px;
-    height: 50vh;
+    height: 400px;
     flex: 1 1 25%;
     margin: 2vh 2vw;
     border-radius: 2px;
     box-shadow: 0 1.5px 4px rgba(0,0,0,0.1),0 1.5px 6px rgba(0,0,0,0.1);
     background-color: white;
     padding: 0px 0px 10px 0px;
-  }
+  } */
 }
 
 /* for larger than 800px */
@@ -560,19 +597,4 @@ margin: auto;
     margin: 4vh 20vw;
   } */
 
-}
-
-/* ========== playing with button styles ========== */
-/* based on code pen Wiggly Jelly Button by Tom Rts */
-
-.cart-button-store, .details-button-store {
-  font-family: 'Montserrat', Helvetica, sans-serif;
-  color: #222;
-  background:  rgb(206, 141, 122);
-  border-radius: 1px;
-  padding: 8px 24px;
-  color: #fff;
-  text-decoration: none;
-  font-size: .9em;
-  margin: 8px 8px;
 }
