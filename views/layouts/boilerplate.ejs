@@ -13,6 +13,8 @@
     />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap" rel="stylesheet">
     <script
       src="https://kit.fontawesome.com/1bd77e11de.js"
       crossorigin="anonymous"
@@ -30,34 +32,40 @@
       type="image/x-icon"
     />
   </head>
-  <header>
-    <div>
-      <a href="/"> Andrew Altman • f u n</a>
-    </div>
-    <div class="header-right">
-      <a href="/products" id="header-store">Store</a>
-      <a
-        href="https://www.facebook.com/thelowestnote/"
-        class="socials"
-        target="_blank"
-        ><i class="fas fa-users"></i
-      ></a>
-      <a
-        href="https://www.instagram.com/andrew_altman/"
-        class="socials"
-        target="_blank"
-        ><i class="fas fa-camera"></i
-      ></a>
-      <a
-        href="https://www.youtube.com/watch?v=QTL9uklYAKg"
-        class="socials"
-        target="_blank"
-        ><i class="fas fa-video"></i
-      ></a>
-    </div>
-  </header>
+
+
+
+
   <body>
-    <%- body %>
-    <!-- <script src="/public/app.js"></script> -->
-  </body>
+    <header class="nav-name">
+        <a class="name" href="/">Andrew Altman</a>
+      </header>
+    <main class="mid-content">
+      <%- body %>
+    </main>
+
+
+
+    <div class="footer">
+      <a href="/products" id="header-store" style="display: none;">Store</a>
+      <a
+      href="https://www.facebook.com/thelowestnote/"
+      class="socials"
+      target="_blank"
+      ><i class="fas fa-users"></i
+        ></a>
+    <a
+      href="https://www.instagram.com/andrew_altman/"
+      class="socials"
+      target="_blank"
+      ><i class="fas fa-camera"></i
+    ></a>
+    <a
+      href="https://www.youtube.com/watch?v=QTL9uklYAKg"
+      class="socials"
+      target="_blank"
+      ><i class="fas fa-video"></i
+    ></a>
+    </div>
+</body>
 </html>
