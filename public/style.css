@@ -9,16 +9,25 @@ to stretch, instead of repeating*/
 
 html {
   min-height: 100%;
+  /* position: absolute; */
+
 }
 
 body {
   font-family: "Playfair Display", serif;
   background-color: rgba(64, 85, 70, 0.8);
   text-align: center;
-  color: rgba(0, 0, 0, 0.75);
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* height: 20vh; */
+  background: url("images/bass_hand_center_wide.jpg");
+  /* background:linear-gradient(0deg, rgba(5, 5, 5, 0.7), 
+  rgba(3, 3, 3, 0.7)), 
+  url("images/bass_hand_center_wide.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 h1 {
@@ -30,52 +39,39 @@ h1 {
   /* color: rgba(0, 0, 0, 0.7); */
 }
 
-/* a { 
-  color: blanchedalmond;
-} */
-
 a:link {
   /* color: blanchedalmond; */
   /* background-color: transparent; */
   text-decoration: none;
 }
 
-/* a:visited {
-  color: black;
-  background-color: transparent;
-} */
-
 a:hover {
   /* color: hotpink; */
   background-color: transparent;
 }
 
-/* why use the below? */
-
-/* a:active {
-  color: rgb(86, 143, 86);
-  background-color: transparent;
-} */
-
-
 /* ====================== Header ======================= */
 
-header {
-  font-family: 'Cabin Sketch', cursive;
-  display: flex;
-  flex-flow: row;
-  /* font-size: large; */
-  justify-content: center;
-  align-items:flex-end;
+/* header {
   height: 20vh;
-  background:linear-gradient(0deg, rgba(5, 5, 5, 0.7), rgba(3, 3, 3, 0.7)), url("images/unsplash_placeholder_desk.jpg");
-  background-size: cover;
-}
+  background:
+    linear-gradient(0deg, rgba(5, 5, 5, 0.7), 
+    rgba(3, 3, 3, 0.7)), 
+    url("images/bass_hand_center.jpg");
+  background-size: 100%;
+} */
 
- .name {
-  color: rgba(255, 235, 205, 0.9);
+.name {
+  position: fixed;
+  top:400px;
+  right:30px;
+  font-family: 'Cabin Sketch', cursive;
+  color: rgba(34, 24, 9, 0.281);
+  /* color: rgba(34, 24, 9, 0.507); */
+  /* color: rgba(255, 235, 205, 0.692); */
   font-size: 2rem;
-  align-self: flex-end;
+  /* align-self: flex-end; */
+  
 }
 
 .mid-content {
@@ -83,16 +79,13 @@ header {
 }
 
 .footer {
-  height: 90px;
-  background-color: rgba(8, 8, 8, 0.788);
+  /* height: 90px; */
+  /* background-color: rgba(8, 8, 8, 0.788); */
   align-items: center;
-  /* flex-shrink: 0; */
-  padding-top: 2vh;
+  padding: 2vh;
 }
 
 .footer a {
-  /* display: flex; */
-  /* justify-content: space-around; */
   color: blanchedalmond;
   margin: 0px 1vw;
 }
@@ -631,8 +624,31 @@ margin: auto;
   }
 }
 
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
   .name {
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+} */
+
+@media all and (orientation: portrait){
+  body {
+    background:linear-gradient(0deg, rgba(5, 5, 5, 0.5), 
+   rgba(3, 3, 3, 0.5)), 
+    url("images/bass_hand_center_mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* min-height: 100vh; */
   }
 }
+
+@media all and (orientation: portrait){
+  body {
+    background:linear-gradient(0deg, rgba(5, 5, 5, 0.5), 
+   rgba(3, 3, 3, 0.5)), 
+    url("images/bass_hand_center_mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+
