@@ -21,10 +21,23 @@ body {
 h1 {
   display: block;
   font-size: 3rem;
-  margin: 3vw;
+  /* margin: 3vw; */
   text-align: center;
   text-decoration: none;
   /* color: rgba(0, 0, 0, 0.7); */
+}
+
+hr {
+  display: block;
+  margin: 0 100px;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
 }
 
 a:link {
@@ -50,32 +63,54 @@ a:active {
 /* ====================== Header ======================= */
 
 header {
+  /* position: relative; */
+  height: 100px;
   display: flex;
-  font-size: large;
+  flex-flow: row wrap;
   justify-content: space-between;
+  /* align-content: space-between; */
   align-items: center;
-  align-content: center;
-  margin: auto;
-  padding: 15px;
-  background-color: rgba(134,145,137,255);
+  /* font-size: large; */
+  /* margin-bottom: 10vw; */
+  /* padding: 15px; */
+  background-color: rgba(134,145,137,255); 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  /* background-image:url(/public/images/upright.jpg);
+  background-position: center;
+  background-size: cover; */
 }
 
-.header-right a {
-  margin: 0px 7px;
+.navbar-items {
+  /* background-color: white; */
+  margin: 0px 40px;
+  /* flex-basis:auto; */
 }
 
-hr {
-  display: block;
-  margin: 0 100px;
-  border: 0;
-  height: 2px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
+#navbar-left{
+ /* text-align: left; */
+ 
 }
+
+#navbar-right h3{
+  display: inline;
+}
+
+#navbar-right a{
+  margin: 5px 5px;
+}
+
+/* header::before {    
+  content: "";
+  background-image: url(/public/images/upright.jpg);
+  background-size:cover;
+  background-position: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+} */
 
 /* ====================== error ======================= */
 
@@ -112,14 +147,9 @@ hr {
   background-color: transparent;
 }
 
-h2 {
-  font-weight: lighter;
-  margin-top: 20px;
-}
-
 iframe {
   display: block;
-  margin: auto;
+  margin: 7vw auto auto auto;
   box-shadow: 0 0px 15px -10px #777;
   border-radius: 5px;
 }
@@ -590,7 +620,7 @@ margin: auto;
   }
   h1 {
     font-size: 4rem;
-    margin: 2vh auto;
+    /* margin: 2vh auto; */
   }
   hr {
     margin: 0 200px;
@@ -600,6 +630,9 @@ margin: auto;
     border-radius: 5px;
   }
 
+  .cart{
+    margin-top: 30px;
+  }
   /* #store-products {
     margin: 4vh 20vw;
   } */
