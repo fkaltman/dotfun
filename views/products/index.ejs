@@ -1,11 +1,11 @@
 <% layout('layouts/boilerplate') %>
 
-
-
 <body class="store">
 
   <script src="https://www.paypal.com/sdk/js?client-id=AaMcesOVIzWrsT_JHWU8DVt2rZb3aDR5TLuLD9qL_HYMUOTdHem3mVkcvc2E6f2Cqycew190cSanwBrA">
   </script>
+
+<%- include('../partials/header') %>
 
   <div id="store-products">
     <% for (let product of products){%>

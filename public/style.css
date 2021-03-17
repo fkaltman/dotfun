@@ -9,13 +9,50 @@ to stretch, instead of repeating*/
 
 html {
   min-height: 100%;
+  /* position: absolute; */
+
 }
 
 body {
   font-family: "Playfair Display", serif;
   background-color: rgba(64, 85, 70, 0.8);
   text-align: center;
-  color: rgba(0, 0, 0, 0.75);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ====================== Home ======================= */
+
+#home{
+  font-family: "Playfair Display", serif;
+  background-color: rgba(64, 85, 70, 0.8);
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: url("images/bass_hand_center_wide.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.name {
+  position: fixed;
+  top:400px;
+  right:30px;
+  font-family: 'Cabin Sketch', cursive;
+  color: rgba(34, 24, 9, 0.281);
+  /* color: rgba(34, 24, 9, 0.507); */
+  /* color: rgba(255, 235, 205, 0.692); */
+  font-size: 2rem;
+  /* align-self: flex-end; */
+  
+}
+
+.mid-content {
+  flex: 1;
 }
 
 h1 {
@@ -41,49 +78,38 @@ hr {
 }
 
 a:link {
-  color: black;
-  background-color: transparent;
+  /* color: blanchedalmond; */
+  /* background-color: transparent; */
   text-decoration: none;
 }
 
-a:visited {
-  color: black;
-  background-color: transparent;
-}
-
 a:hover {
-  color: #66836c;
+  /* color: hotpink; */
   background-color: transparent;
 }
 
-a:active {
-  color: rgb(86, 143, 86);
-  background-color: transparent;
-}
 /* ====================== Header ======================= */
 
-header {
-  /* position: relative; */
-  height: 100px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  /* align-content: space-between; */
+/* header {
+  height: 20vh;
+  background:
+    linear-gradient(0deg, rgba(5, 5, 5, 0.7), 
+    rgba(3, 3, 3, 0.7)), 
+    url("images/bass_hand_center.jpg");
+  background-size: 100%;
+} */
+
+
+.footer {
+  /* height: 90px; */
+  /* background-color: rgba(8, 8, 8, 0.788); */
   align-items: center;
-  /* font-size: large; */
-  /* margin-bottom: 10vw; */
-  /* padding: 15px; */
-  background-color: rgba(134,145,137,255); 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  /* background-image:url(/public/images/upright.jpg);
-  background-position: center;
-  background-size: cover; */
+  padding: 2vh;
 }
 
-.navbar-items {
-  /* background-color: white; */
-  margin: 0px 40px;
-  /* flex-basis:auto; */
+.footer a {
+  color: blanchedalmond;
+  margin: 0px 1vw;
 }
 
 #navbar-left{
@@ -99,18 +125,12 @@ header {
   margin: 5px 5px;
 }
 
-/* header::before {    
-  content: "";
-  background-image: url(/public/images/upright.jpg);
-  background-size:cover;
-  background-position: center;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.5;
-} */
+/* ====== iframe on the home page ====== */
+.update-frame {
+  margin-top: 10vh;
+}
+
+
 
 /* ====================== error ======================= */
 
@@ -274,11 +294,11 @@ ul {
   margin: 2.5vh 5vw;
   display: flex;
   flex-wrap: wrap;
+  /* flex-wrap: nowrap; */
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  align-content: flex-start;
+  justify-content: center;
+  /* align-items: flex-start; */
+  /* align-content: flex-start; */
   background: rgba(64, 85, 70, 0.0);
   border-radius: 2px;
 }
@@ -534,7 +554,8 @@ margin: auto;
 
 /* ====================== MQ ======================== */
 
-/* for smaller than 480px */
+/* for smaller than 580px */
+
 @media only screen and (max-width: 580px) {
   iframe {
     width: 270px;
@@ -595,21 +616,6 @@ margin: auto;
     border-radius: 2px;
   }
   
-  /* not sure if we need the below MQ since I 
-  locked the height of the card */
-
-
-  /* #store-products > div {
-    width: 18vw;
-    min-width: 220px;
-    height: 400px;
-    flex: 1 1 25%;
-    margin: 2vh 2vw;
-    border-radius: 2px;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,0.1),0 1.5px 6px rgba(0,0,0,0.1);
-    background-color: white;
-    padding: 0px 0px 10px 0px;
-  } */
 }
 
 /* for larger than 800px */
@@ -630,11 +636,31 @@ margin: auto;
     border-radius: 5px;
   }
 
-  .cart{
-    margin-top: 30px;
+  .name {
+    font-size: 3.5rem;
   }
-  /* #store-products {
-    margin: 4vh 20vw;
-  } */
-
 }
+
+/* @media only screen and (min-width: 1200px) {
+  .name {
+    font-size: 3rem;
+  }
+} */
+
+@media all and (orientation: portrait){
+  #home {
+    background: url("images/bass_hand_center_mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media all and (orientation: portrait){
+  #home {
+    background: url("images/bass_hand_center_mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+
