@@ -15,7 +15,7 @@ html {
 
 body {
   font-family: "Playfair Display", serif;
-  background-color: rgba(64, 85, 70, 0.8);
+  background-color: rgb(206,209,213);
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -27,7 +27,7 @@ body {
 
 #home{
   font-family: "Playfair Display", serif;
-  background-color: rgba(64, 85, 70, 0.8);
+  background-color: rgb(206,209,213);
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -40,8 +40,8 @@ body {
 
 .name {
   position: fixed;
-  top:400px;
-  right:30px;
+  top: 40vh;
+  right: 5vw;
   font-family: 'Cabin Sketch', cursive;
   color: rgba(34, 24, 9, 0.281);
   /* color: rgba(34, 24, 9, 0.507); */
@@ -57,24 +57,11 @@ body {
 
 h1 {
   display: block;
-  font-size: 3rem;
+  font-size: 2rem;
   /* margin: 3vw; */
   text-align: center;
   text-decoration: none;
   /* color: rgba(0, 0, 0, 0.7); */
-}
-
-hr {
-  display: block;
-  margin: 0 100px;
-  border: 0;
-  height: 2px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
 }
 
 a:link {
@@ -90,14 +77,39 @@ a:hover {
 
 /* ====================== Header ======================= */
 
-/* header {
-  height: 20vh;
-  background:
-    linear-gradient(0deg, rgba(5, 5, 5, 0.7), 
-    rgba(3, 3, 3, 0.7)), 
-    url("images/bass_hand_center.jpg");
+header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 7.5vh;
   background-size: 100%;
-} */
+}
+
+header h1{
+  font-family: 'Cabin Sketch', cursive;
+}
+
+header a {
+  color: rgba(85,70,66, 0.8)
+  ;
+}
+
+#header-left{
+  margin-left: 3vw;
+}
+
+#header-right{
+  margin-right: 3vw;
+}
+
+#header-right h3{
+  display: inline;
+}
+
+#header-right a{
+  margin: 5px 5px;
+}
 
 
 .footer {
@@ -112,69 +124,23 @@ a:hover {
   margin: 0px 1vw;
 }
 
-#navbar-left{
- /* text-align: left; */
- 
-}
-
-#navbar-right h3{
-  display: inline;
-}
-
-#navbar-right a{
-  margin: 5px 5px;
-}
-
-/* ====== iframe on the home page ====== */
-.update-frame {
-  margin-top: 10vh;
-}
-
-
 
 /* ====================== error ======================= */
 
-.error{
+.message{
   background-color: aliceblue;
-  margin: 10vh 20vw ;
-  padding: 200px 200px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 15vh auto ;
+  height: 40vh;
+  width: 60vw;
+  /* padding: 200px 200px; */
 }
 
-/* ====================== Player ======================= */
-
-#playlist {
-  margin-top: 2vh;
-}
-
-.song a:link {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-.song a:visited {
-  color: rgb(185, 140, 71);
-  background-color: transparent;
-}
-
-.song a:hover {
-  color: #66836c;
-  background-color: transparent;
-}
-
-.song a:active {
-  color: rgb(86, 143, 86);
-  background-color: transparent;
-}
-
-iframe {
-  display: block;
-  margin: 7vw auto auto auto;
-  box-shadow: 0 0px 15px -10px #777;
-  border-radius: 5px;
-}
-
-/* ================== Promo Code Page =================== */
+/* ================== Vinyl Masters =================== */
 
 .please-enter {
   font-family: "Roboto", sans-serif;
@@ -218,8 +184,8 @@ iframe {
   padding-top: 4vh;
 }
 
-#thanks {
-  color: blanchedalmond;
+#hires-info {
+  color: rgb(39,31,27)  ;
   font-family: "Roboto", sans-serif;
   width: 72vw;
   padding: 16px;
@@ -233,7 +199,7 @@ iframe {
 }
 
 #links {
-  margin-top: 4vh;
+  margin: 4vh auto;
 }
 
 .listen,
@@ -248,6 +214,25 @@ iframe {
   width: 100px;
 }
 
+#audioplayerContainter{
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  background: linear-gradient(rgb(121, 72, 70,), rgb(166, 82, 63));
+}
+
+audio {
+  margin: auto;
+  width: 280px;
+  /* margin-top: 5vh; */
+}
+
+#playlist {
+  margin-top: 2vh;
+}
+
 .song {
   font-family: "Roboto", sans-serif;
   margin-top: 1.6vh;
@@ -255,33 +240,30 @@ iframe {
   font-size: 2rem;
 }
 
-audio {
-  margin: auto;
-  width: 280px;
-  margin-top: 5vh;
+.song a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
 }
 
-table {
-  border: 2px solid black;
-  border-radius: 5px;
-  margin: 30px auto;
-  background-color: white;
+.song a:visited {
+  color: rgb(185, 140, 71);
+  background-color: transparent;
 }
 
-td {
-  /* border: 2px solid black; */
-  background-color: rgb(241, 243, 244);
-  /* border-radius: 5px; */
+.song a:hover {
+  color: #66836c;
+  background-color: transparent;
+}
+
+.song a:active {
+  color: rgb(86, 143, 86);
+  background-color: transparent;
 }
 
 ul {
   list-style-type: none;
 }
-
-.gradient-background {
-  background: linear-gradient(#794846, #a6523f);
-}
-
 
 /* ====================== Store ======================= */
 
@@ -381,36 +363,6 @@ margin-top: 40px;
 .swal2-actions > .swal2-styled {
   background-color: rgba(150, 170, 149, 0.993);
 }
-
-/* ====================== Product Page ======================== */
-
-/* img {
-  height: auto;
-  width: 50vw;
-  border-radius: 5px;
-}
-
-#image-buy{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  margin: 2vh 5vw;
-}
-
-#image-buy > div{
-  flex: auto;
-}
-
-#image-buy > div > h2{
-margin: auto;
-}
-
-/* p {
-  margin: 2vh 5vw;
-  font-size: 0.9rem;
-  font-weight: bolder;
-} */
 
 /* ====================== Cart ======================== */
 
@@ -552,33 +504,25 @@ margin: auto;
     color: rgb(27, 24, 24);
   }
 
+/* ====================== Thanks ======================== */
+
+.message img{
+  height: 200px;
+  width: 300px;
+}
+
 /* ====================== MQ ======================== */
 
 /* for smaller than 580px */
 
-@media only screen and (max-width: 580px) {
-  iframe {
-    width: 270px;
-    height: 174px;
-  }
-  h1 {
+@media only screen and (max-width: 567px) {
+
+  .name{
     font-size: 1.8rem;
-    letter-spacing: 4px;
-    padding-top: 4px;
-  }
-  #thanks {
-    width: 270px;
-    margin: auto;
-    font-size: 0.85rem;
-    border-radius: 5px;
-    line-height: 1.4em;
-  }
-  audio {
-    width: 230px;
   }
 
-  .vinyl-master-title {
-    padding-top: 3vh;
+  h1{
+    font-size: 1rem;
   }
 
   #form {
@@ -587,9 +531,20 @@ margin: auto;
     margin-top: 160px;
   }
 
-  #links {
+  #hires-info {
+    width: 270px;
     margin: auto;
-    margin-top: 4vh;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    line-height: 1.4em;
+  }
+
+  audio {
+    width: 230px;
+  }
+
+  .vinyl-master-title {
+    padding-top: 3vh;
   }
 
   .song {
@@ -619,19 +574,8 @@ margin: auto;
 }
 
 /* for larger than 800px */
-@media only screen and (min-width: 800px) {
-  iframe {
-    width: 650px;
-    height: 364px;
-  }
-  h1 {
-    font-size: 4rem;
-    /* margin: 2vh auto; */
-  }
-  hr {
-    margin: 0 200px;
-  }
-
+@media only screen and (min-width: 800px) and (min-height: 700px){
+  
   #form {
     border-radius: 5px;
   }
@@ -641,26 +585,33 @@ margin: auto;
   }
 }
 
-/* @media only screen and (min-width: 1200px) {
-  .name {
-    font-size: 3rem;
+@media all and (max-aspect-ratio: 1110/740) {
+  .name{
+    top: 5vh;
+    left: 26vw;
+    right: auto;
+   }
+}
+
+@media all and (orientation: portrait){
+  #home {
+    background: url("images/bass_hand_center_mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .name{
+    top: 30px;
+    left: 30px;
+    right: auto;
+   }
+}
+
+/* @media all and (orientation: portrait){
+  #home {
+    background: url("images/bass_hand_center_mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 } */
-
-@media all and (orientation: portrait){
-  #home {
-    background: url("images/bass_hand_center_mobile.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
-
-@media all and (orientation: portrait){
-  #home {
-    background: url("images/bass_hand_center_mobile.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
 
 

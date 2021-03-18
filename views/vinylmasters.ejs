@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate') %>
-<body class="gradient-background">
+<body>
   <%- include('partials/header') %>
 
   <form id="form" class="show">
@@ -11,8 +11,7 @@
 
   <div id="hires" class="hide">
     <h1 class="vinyl-master-title">Vinyl Masters</h1>
-    <hr />
-    <p id="thanks">
+    <p id="hires-info">
       Thank you for supporting The Moment. These files are the high resolution
       digital masters that were pressed into the vinyl records. They are 24bit
       96k files. CDs are only 16bit 44.1k files for comparison. CDs can also be
@@ -60,7 +59,7 @@
     const theGoods = document.querySelector("#hires");
     const listenLink = document.querySelector(".listen")
     const audioplayerContainter = document.querySelector("#audioplayerContainter")
-    const thanks = document.querySelector("#thanks")
+    const hiresInfo = document.querySelector("#hires-info")
 
     const verifyCode = function (e) {
       let theCode = codeInput.value;
@@ -77,7 +76,7 @@
 
     listenLink.addEventListener("click", () => {
       audioplayerContainter.style.display = "block";
-      thanks.style.display = "none";
+      hiresInfo.style.display = "none";
     })
 
     const audioPlayer = document.querySelector("#audioPlayer");

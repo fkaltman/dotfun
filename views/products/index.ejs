@@ -31,40 +31,36 @@
   <%}%>
   </div>
 
-  <footer>
+  <div>
+    <section class="cart content-section">
+      <h2 class="section-header"><i class=" cart-icon fas fa-shopping-cart"></i></h2>
+      <div class="cart-row">
+        <span class="cart-item cart-header cart-column">item</span>
+        <span class="cart-price cart-header cart-column">price</span>
+        <span class="cart-quantity cart-header cart-column">quantitiy</span>
+      </div>
+      <div class="cart-items"></div>
+      <div class="cart-total">
+        <span class="cart-total-title subtotal">subtotal</span>
+        <span class="cart-subtotal-price">$0</span>
 
-  <section class="cart content-section">
-    <h2 class="section-header"><i class=" cart-icon fas fa-shopping-cart"></i></h2>
-    <div class="cart-row">
-      <span class="cart-item cart-header cart-column">item</span>
-      <span class="cart-price cart-header cart-column">price</span>
-      <span class="cart-quantity cart-header cart-column">quantitiy</span>
-    </div>
-    <div class="cart-items"></div>
-    <div class="cart-total">
-      <span class="cart-total-title subtotal">subtotal</span>
-      <span class="cart-subtotal-price">$0</span>
+        <br>
+        <span class="cart-total-title shipping">shipping</span>
+        <span class="cart-shipping-price">$0</span>
 
-      <br>
-      <span class="cart-total-title shipping">shipping</span>
-      <span class="cart-shipping-price">$0</span>
-
-      <br>
-      <span class="cart-total-title total">total</span>
-      <span class="cart-total-price">$0</span>
-    </div>
-    <button class="btn-checkout" type="button">
-      Checkout
-    </button>
-    <button class="btn-keep-shopping" type="button">
-      Keep Shopping
-    </button>
-    <div id="paypal-button-container"></div>
-  </section>
-
-
-</footer>
-
+        <br>
+        <span class="cart-total-title total">total</span>
+        <span class="cart-total-price">$0</span>
+      </div>
+      <button class="btn-checkout" type="button">
+        Checkout
+      </button>
+      <button class="btn-keep-shopping" type="button">
+        Keep Shopping
+      </button>
+      <div id="paypal-button-container"></div>
+    </section>
+  </div>
 
   <script>
 
