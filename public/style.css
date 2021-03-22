@@ -14,7 +14,7 @@ html {
 
 body {
   font-family: "Playfair Display", serif;
-  background-color: rgb(206, 209, 213);
+  background-color: rgba(206, 209, 213, 0.322);
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -70,21 +70,23 @@ a:hover {
 /* ====================== Header ======================= */
 
 header {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
   align-items: center;
-  height: 7.5vh;
+  height: 3vh;
   background-size: 100%;
-  color: rgba(85, 70, 66, 0.8);
+  margin-top: 3.5vh;
+  margin-bottom: 4.5vh;
 }
 
-header h1 {
+.header-name {
+  color: #888484e3;
+  /* color: rgba(121, 96, 76, 0.479); */
   font-family: "Cabin Sketch", cursive;
-}
+  font-size: 3em;
+  }
 
 header a {
-  color: rgba(85, 70, 66, 0.8);
+  /* color: rgba(63, 45, 39, 0.534); */
+  color: rgba(55, 63, 39, 0.39);
 }
 
 #header-left {
@@ -103,17 +105,17 @@ header a {
   margin: 5px 5px;
 }
 
-.footer {
-  /* height: 90px; */
-  /* background-color: rgba(8, 8, 8, 0.788); */
-  align-items: center;
-  padding: 2vh;
+.middle-social {
+  margin: 0px 10px;
 }
+
+/* ====================== Footer ======================= */
 
 .footer a {
   color: blanchedalmond;
   margin: 0px 1vw;
 }
+
 
 /* ====================== error ======================= */
 
@@ -138,12 +140,13 @@ header a {
 
 #form {
   font-size: 16px;
-  width: 40vw;
+  width: 70vw;
   margin: 30vh auto;
   padding: 20px;
   border-radius: 5px;
   min-width: 200px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #7e573f4b;
+  /* background-color: rgba(34, 30, 30, 0.2); */
 }
 
 .show {
@@ -526,7 +529,9 @@ ul {
   font-weight: 500;
   font-size: 0.9em;
   padding: 5px;
-  color: rgb(27, 24, 24);
+  color: rgb(87, 68, 68);
+  border: 2px solid rgb(87, 68, 68); 
+  border-radius: 5px;
 }
 
 /* ====================== Thanks ======================== */
@@ -582,10 +587,21 @@ ul {
   .song {
     font-size: 1.6rem;
   }
-
+/* 
   .socials {
     display: none;
-  }
+  } */
+/* 
+  header {
+    height: 3vh;
+    margin-top: 3.5vh;
+    margin-bottom: 4.5vh;
+  } */
+  
+  .header-name {
+    font-size: 2em;
+    }
+  
 }
 
 @media only screen and (max-width: 846px) and (min-width: 537px) {
