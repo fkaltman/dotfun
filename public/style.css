@@ -53,7 +53,7 @@ body {
 
 #home h2 {
   color: rgba(34, 24, 9, 0.281);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 a:link {
@@ -70,16 +70,13 @@ a:hover {
 /* ====================== Header ======================= */
 
 header {
-  align-items: center;
-  height: 3vh;
+  height:fit-content;
   background-size: 100%;
-  margin-top: 3.5vh;
-  margin-bottom: 4.5vh;
+  margin-top: 2vh;
 }
 
 .header-name {
   color: #888484e3;
-  /* color: rgba(121, 96, 76, 0.479); */
   font-family: "Cabin Sketch", cursive;
   font-size: 3em;
   }
@@ -89,20 +86,8 @@ header a {
   color: rgba(55, 63, 39, 0.39);
 }
 
-#header-left {
-  margin-left: 3vw;
-}
-
-#header-right {
-  margin-right: 4vw;
-}
-
-#header-right h3 {
-  display: inline;
-}
-
-#header-right a {
-  margin: 5px 5px;
+header a:nth-of-type(2){
+  margin-left: 4vw;
 }
 
 .middle-social {
@@ -180,9 +165,9 @@ header a {
 #hires-info {
   color: rgb(39, 31, 27);
   font-family: "Roboto", sans-serif;
-  width: 72vw;
+  width: 50vw;
   padding: 16px;
-  margin: auto;
+  margin: 8vh auto auto auto;
   text-align: justify;
   line-height: 2em;
 }
@@ -192,7 +177,7 @@ header a {
 }
 
 #links {
-  margin: 4vh auto;
+  margin: 10vh auto;
 }
 
 .listen,
@@ -211,9 +196,11 @@ header a {
   width: fit-content;
   height: fit-content;
   margin: auto;
-  padding: 10px;
+  padding: 5vh 5vh;
+  border: 1px solid rgba(68,92,108, 0.5);
   border-radius: 5px;
-  background: linear-gradient(rgb(121, 72, 70), rgb(166, 82, 63));
+  background: rgb(147,156,171)
+  ;
 }
 
 audio {
@@ -555,7 +542,7 @@ ul {
   }
 
   #home h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   h1 {
@@ -569,8 +556,8 @@ ul {
   }
 
   #hires-info {
-    width: 270px;
-    margin: auto;
+    width: 80vw;
+    margin: 4vh auto auto auto;
     font-size: 0.85rem;
     border-radius: 5px;
     line-height: 1.4em;
@@ -631,7 +618,7 @@ ul {
   }
 
   #home h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .sticky-cart {
@@ -660,3 +647,9 @@ ul {
     right: auto;
   }
 }
+
+/* @media all and (orientation: landscape){
+  #hires-info{
+    width
+  }
+}  */
