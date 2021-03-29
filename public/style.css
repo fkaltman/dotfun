@@ -114,49 +114,63 @@ header a:nth-of-type(2){
   margin: 0px 1vw;
 }
 
-
 /* ====================== error ======================= */
 
+
+
+/* ====================== Thanks ======================== */
+
 .message {
-  background-color: aliceblue;
+  font-family: 'Shadows Into Light', cursive;  
   display: flex;
-  flex-flow: column;
   justify-content: center;
   align-content: center;
   align-items: center;
-  margin: 15vh auto;
-  aspect-ratio: 1/1;
-  height: auto;
-  width: 70vw;
+  margin: 7vh auto;
   background-image: url(/public/images/thanks.jpg);
   background-size: cover;
-  /* height: 40vh;
-  width: 60vw; */
-  /* padding: 200px 200px; */
+  height: 40vh;
+  width: 60vw;
+  height: 300px;
+  width: 300px;
 }
 
 .message h2{
-  background-color: rgba(255, 255, 255, 0.97);
-  margin: 10% 10%;
-  padding: 5% 5%;
+  font-size: 14px;
+  width:800px;
+  margin-top:18%;
+  color: rgba(214, 231, 206);
+  background-color: rgba(69, 109, 71, 0.9);
+  padding: 2% 10%;
+}
+
+.error-h2 {
+  font-family: 'Shadows Into Light', cursive;  
+  font-size: 2em;
+  margin-top:10vh;
+  color: rgba(214, 231, 206);
+  background-color: rgba(69, 109, 71, 0.9);
+  padding: 12% 10%;
+
 }
 
 /* ================== Vinyl Masters =================== */
 
 .please-enter {
   font-family: "Roboto", sans-serif;
+  font-size: 24px;
 }
 
 #form {
+  height: 155px;
   font-size: 16px;
   width: 70vw;
-  margin: 30vh auto;
+  margin: 48px auto;
+  /* margin: 180px auto; */
   padding: 20px;
   border-radius: 5px;
   min-width: 200px;
-  background-color: rgba(163,151,144, 0.8)
-  ;
-  /* background-color: rgba(34, 30, 30, 0.2); */
+  background-color: rgba(214, 182, 164, 0.8);
 }
 
 .show {
@@ -168,17 +182,22 @@ header a:nth-of-type(2){
 }
 
 #promo-button {
+  color: rgb(66, 65, 65);
   font-size: 16px;
-  width: 50px;
+  width: 100px;
+  height: 28px;
   border-radius: 6px;
   margin-top: 1vh;
+  margin-bottom: 1vh;
   font-family: "Roboto", sans-serif;
+  background-color: lightgray;
 }
 
 #code-input {
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Roboto", sans-serif;
-  width: 80px;
+  width: 120px;
+  height: 30px;
   margin-top: 1vh;
 }
 
@@ -202,32 +221,40 @@ header a:nth-of-type(2){
 }
 
 #links {
-  margin: 10vh auto;
+  margin: 6vh auto;
 }
 
 .listen,
 .download {
   text-decoration: none;
   margin: 4px;
-  padding: 8px 10px;
-  border: 2px solid rgba(163,151,144, 0.8)
-;
-  border-radius: 3px;
-  background-color: rgba(163,151,144, 0.8)
-;
+  padding: 8px 40px;
+  /* border: 2px solid rgba(163,151,144, 0.8); */
+  box-shadow: 0 1.5px 4px rgba(161, 160, 160, 0.1), 0 1.5px 6px rgba(165, 164, 164, 0.1);
+  border-radius: 50px;
+  /* background-color: rgba(163,151,144, 0.8); */
   color: black;
-  width: 100px;
+  /* width: 200px; */
 }
+
+.listen {
+  background-color: rgba(214, 182, 164, 0.8);
+}
+
+.download {
+  background-color: rgba(86, 143, 86, 0.623);
+}
+
 
 #audioplayerContainter {
   width: fit-content;
   height: fit-content;
   margin: auto;
-  padding: 5vh 5vh;
-  border: 1px solid rgba(68,92,108, 0.5);
-  border-radius: 5px;
-  background: rgba(163,151,144, 0.8)
-  ;
+  padding: 5vh 2.5vw 9vh;
+  /* border: 1px solid rgba(68,92,108, 0.5); */
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.1), 0 1.5px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  background: rgba(148, 143, 140, 0.4);
 }
 
 audio {
@@ -254,7 +281,7 @@ audio {
 }
 
 .song a:visited {
-  color: rgb(185, 140, 71);
+  color: rgb(92, 84, 73);
   background-color: transparent;
 }
 
@@ -543,16 +570,10 @@ ul {
   font-weight: 500;
   font-size: 0.9em;
   padding: 5px;
+  background-color: rgba(153, 177, 152, 0.473);
   color: rgb(87, 68, 68);
-  border: 2px solid rgb(87, 68, 68); 
+  border: 2px solid rgb(121, 119, 119); 
   border-radius: 5px;
-}
-
-/* ====================== Thanks ======================== */
-
-.message img {
-  height: 200px;
-  width: 300px;
 }
 
 /* ====================== MQ ======================== */
@@ -578,15 +599,14 @@ ul {
 
   #form {
     height: 155px;
-    border-radius: 5px;
-    margin-top: 160px;
+    margin-top: 100px;
   }
 
   #hires-info {
     width: 80vw;
     margin: 4vh auto auto auto;
     font-size: 0.85rem;
-    border-radius: 5px;
+    border-radius: 3px;
     line-height: 1.4em;
   }
 
@@ -637,11 +657,14 @@ ul {
 /* for larger than 800px */
 @media only screen and (min-width: 800px) and (min-height: 700px) {
   #form {
-    border-radius: 5px;
+    margin: 140px auto;
+    padding: 36px;
+    height: 185px;
+    width: 40vw;
   }
 
   .name {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   .store-nav-link {
@@ -655,6 +678,15 @@ ul {
   .sticky-cart {
     display: none;
   }
+
+  .message {
+    height: 600px;
+    width: 600px;
+  }
+
+  .message h2{
+    font-size: 24px;
+}
 }
 
 @media all and (max-aspect-ratio: 1110/740) {

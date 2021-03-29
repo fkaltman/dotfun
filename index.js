@@ -41,6 +41,16 @@ app.use(express.json());
 //loads the stylesheet
 app.use("/public", express.static("public"));
 
+
+// =============== favicon =============//
+
+// Express will not automatically serve files in the root directory. If you want to place /favicon.ico in your site's root directory, you will need to add the appropriate logic to your server:
+
+// app.get('../favicon_io/favicon.ico', (req, res) => {
+//   // Use actual relative path to your .ico file here
+//   res.sendFile(path.resolve(__dirname, "../favicon_io/favicon.ico"));
+// });
+
 // ================================= views ===================================== 
 
 
