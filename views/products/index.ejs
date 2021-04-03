@@ -132,6 +132,7 @@
 
         keepShoppingButton.style.display = "none";
 
+        // stickyCart.style.visibility = "visible";
 
         for (removeCartItemButton of removeCartItemButtons) {
           removeCartItemButton.style.display = "block";
@@ -226,6 +227,8 @@
           checkoutButton.style.display = "none";
 
           keepShoppingButton.style.display = "block";
+
+          stickyCart.style.visibility = "hidden";
 
           for (quantityInput of quantityInputs) {
             quantityInput.readOnly = "readonly";
