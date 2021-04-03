@@ -282,7 +282,7 @@
         let cartItemNames = cartItems.getElementsByClassName("cart-item-title");
         for (cartItemName of cartItemNames) {
           if (cartItemName.innerText == title) {
-            alert("This item is already added to the cart");
+            Swal.fire("This item is already added to the cart");
             return;
           }
         }

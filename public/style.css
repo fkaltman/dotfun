@@ -83,7 +83,7 @@ header {
 
 header a {
   /* color: rgba(63, 45, 39, 0.534); */
-  color: rgba(39,31,27, 0.9);
+  color: rgba(39,31,27, 0.75);
 }
 /* 
 header a:nth-of-type(2){
@@ -114,13 +114,11 @@ header a:nth-of-type(2){
   margin: 0px 1vw;
 }
 
-/* ====================== error ======================= */
-
-
 
 /* ====================== Thanks ======================== */
 
 .message {
+  opacity: .9;
   font-family: 'Shadows Into Light', cursive;  
   display: flex;
   justify-content: center;
@@ -140,17 +138,21 @@ header a:nth-of-type(2){
   width:800px;
   margin-top:18%;
   color: rgba(214, 231, 206);
-  background-color: rgba(69, 109, 71, 0.9);
+  background-color: rgba(69, 110, 102, 0.9);
   padding: 2% 10%;
 }
+
+/* ====================== error ======================= */
 
 .error-h2 {
   font-family: 'Shadows Into Light', cursive;  
   font-size: 2em;
-  margin-top:10vh;
+  padding: 10vh 12vh;
+  margin: 10vh 16vw;
+  /* margin-top:10vh; */
   color: rgba(214, 231, 206);
-  background-color: rgba(69, 109, 71, 0.9);
-  padding: 12% 10%;
+  background-color: rgba(69, 109, 71, 0.6);
+  /* padding: 42% 10%; */
 
 }
 
@@ -170,7 +172,7 @@ header a:nth-of-type(2){
   padding: 20px;
   border-radius: 5px;
   min-width: 200px;
-  background-color: rgba(214, 182, 164, 0.8);
+  background-color: rgba(69, 110, 102, 0.6);
 }
 
 .show {
@@ -242,7 +244,7 @@ header a:nth-of-type(2){
 }
 
 .download {
-  background-color: rgba(86, 143, 86, 0.623);
+  background-color: rgba(69, 110, 102, 0.6);;
 }
 
 
