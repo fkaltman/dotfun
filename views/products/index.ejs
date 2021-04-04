@@ -23,7 +23,6 @@
     <%}%>
   </div>
 
-  <div>
     <section class="cart content-section">
       <h2 class="section-header">
         <i class="cart-icon fas fa-shopping-cart"></i>
@@ -55,7 +54,6 @@
       <span class="sticky-cart-subtotal">Welcome To The Store</span>
       <button class="goto-cart" type="button">Go To Cart</button>
     </div>
-  </div>
 
   <script>
     if (document.readyState == "loading") {
@@ -132,6 +130,7 @@
 
         keepShoppingButton.style.display = "none";
 
+        stickyCart.style.visibility = "visible";
 
         for (removeCartItemButton of removeCartItemButtons) {
           removeCartItemButton.style.display = "block";
@@ -226,6 +225,8 @@
           checkoutButton.style.display = "none";
 
           keepShoppingButton.style.display = "block";
+
+          stickyCart.style.visibility = "hidden";
 
           for (quantityInput of quantityInputs) {
             quantityInput.readOnly = "readonly";
