@@ -63,45 +63,37 @@
     }
 
     function ready() {
+
       const productsContainer = document.querySelector("#store-products");
 
-      const removeCartItemButtons = document.getElementsByClassName(
-        "btn-danger"
-      );
+      const removeCartItemButtons = document.getElementsByClassName("btn-danger");
+
       for (removeCartItemButton of removeCartItemButtons) {
         removeCartItemButton.addEventListener("click", removeCartItem);
       }
 
-      const quantityInputs = document.getElementsByClassName(
-        "cart-quantity-input"
-      );
+      const quantityInputs = document.getElementsByClassName("cart-quantity-input");
+
       for (quantityInput of quantityInputs) {
         quantityInput.addEventListener("change", quantityChanged);
       }
 
-      const addToCartButtons = document.getElementsByClassName(
-        "cart-button-store"
-      );
-      for (addToCartButton of addToCartButtons) {
-        addToCartButton.addEventListener("click", addToCartClicked);
-      }
+      const addToCartButtons = document.getElementsByClassName("cart-button-store");
 
       for (addToCartButton of addToCartButtons) {
+        addToCartButton.addEventListener("click", addToCartClicked);
         if (addToCartButton.innerText === "Sold Out") {
-          // addToCartButton.parentElement.style.opacity = 1 ;
-          // addToCartButton.parentElement.style.backgroundColor = "gainsboro";
           addToCartButton.disabled = true;
         }
       }
 
       const details = document.querySelectorAll(".details-button-store");
+      
       for (detail of details) {
         detail.addEventListener("click", showModal);
       }
 
-      const paypalButtonContainer = document.querySelector(
-        "#paypal-button-container"
-      );
+      const paypalButtonContainer = document.querySelector("#paypal-button-container");
 
       const gotoCartButton = document.querySelector(".goto-cart")
 
@@ -111,162 +103,32 @@
 
       checkoutButton.addEventListener("click", checkoutClicked);
 
-      const keepShoppingButton = document.getElementsByClassName(
-        "btn-keep-shopping"
-      )[0];
-
-      const stickyCart = document.querySelector(".sticky-cart")
+      const keepShoppingButton = document.getElementsByClassName("btn-keep-shopping")[0];
 
       keepShoppingButton.addEventListener("click", keepShoppingClicked);
 
       keepShoppingButton.style.display = "none";
 
-      function keepShoppingClicked() {
-        console.log(cartContents);
+      const stickyCart = document.querySelector(".sticky-cart")
 
-        productsContainer.style.display = "flex";
+      let prodObj;
 
-        checkoutButton.style.display = "block";
-
-        keepShoppingButton.style.display = "none";
-
-        stickyCart.style.visibility = "visible";
-
-        for (removeCartItemButton of removeCartItemButtons) {
-          removeCartItemButton.style.display = "block";
-        }
-
-        for (quantityInput of quantityInputs) {
-          quantityInput.readOnly = "";
-        }
-
-        paypalButtonContainer.innerHTML = "";
+      function getProducts() {
+        fetch("/modal")
+          .then((res) => res.json())
+          .then((data) => (prodObj = data));
       }
 
-      
-      function gotoCartClicked(){
-        document.querySelector(".content-section").scrollIntoView();
-      }
-
-      function checkoutClicked() {
-        if (document.querySelector(".cart-total-price").innerText === "$0") {
-          Swal.fire("There is nothing in the cart");
-        } else {
-          let paypalItems = [];
-          let name = "";
-          let unit_amount = {
-            currency_code: "USD",
-            value: 0,
-          };
-          let quantity = 0;
-
-          function paypalItem(name, unit_amount, quantity) {
-            this.name = cartContent.title;
-            this.unit_amount = {
-              currency_code: "USD",
-              value: cartContent.price,
-            };
-            this.quantity = cartContent.quantity;
-          }
-
-          for (cartContent of cartContents) {
-            paypalItems.push(new paypalItem(name, unit_amount, quantity));
-          }
-
-          console.log(paypalItems);
-
-          function checkoutDbUpdate() {
-            fetch("/products", {
-              headers: { "Content-Type": "application/json" },
-              method: "PUT",
-              body: JSON.stringify(cartContents),
-            });
-          }
-
-          paypal
-            .Buttons({
-              createOrder: function (data, actions) {
-                return actions.order.create({
-                  purchase_units: [
-                    {
-                      description: "Andrew Altman Merch",
-                      amount: {
-                        currency_code: "USD",
-                        value: cartTotal,
-                        breakdown: {
-                          item_total: {
-                            currency_code: "USD",
-                            value: cartSubtotal,
-                          },
-                          shipping: {
-                            currency_code: "USD",
-                            value: shipping,
-                          },
-                        },
-                      },
-                      items: paypalItems,
-                    },
-                  ],
-                });
-              },
-              onApprove: function (data, actions) {
-                return actions.order
-                  .capture()
-                  .then(() => {
-                    window.location.href = "/products/thanks";
-                  })
-                  .then(checkoutDbUpdate());
-              },
-            })
-            .render("#paypal-button-container");
-
-          productsContainer.style.display = "none";
-
-          checkoutButton.style.display = "none";
-
-          keepShoppingButton.style.display = "block";
-
-          stickyCart.style.visibility = "hidden";
-
-          for (quantityInput of quantityInputs) {
-            quantityInput.readOnly = "readonly";
-          }
-
-          for (removeCartItemButton of removeCartItemButtons) {
-            removeCartItemButton.style.display = "none";
+      function showModal(e) {
+        let title = `${this.parentElement.children[2].innerText}`;
+        for (let i = 0; i < prodObj.products.length; i++) {
+          if (title == prodObj.products[i].title) {
+            Swal.fire(`${prodObj.products[i].subtitle}`);
           }
         }
       }
 
-      function removeCartItem(event) {
-        let buttonClicked = event.target;
-        buttonClicked.parentElement.parentElement.remove();
-        updateCart();
-      }
-
-      function quantityChanged(event) {
-        let input = event.target;
-        let title = `${this.parentElement.parentElement.children[0].children[0].innerText}`;
-        // refactor?
-        for (let i = 0; i < obj.products.length; i++) {
-          if (
-            title == obj.products[i].title &&
-            input.value > obj.products[i].stockQty
-          ) {
-            Swal.fire(
-              `There are only ${obj.products[i].stockQty} left in stock`
-            );
-            input.value = `${obj.products[i].stockQty}`;
-            updateCart();
-          } else if (input.value <= obj.products[i].stockQty) {
-            updateCart();
-          }
-        }
-        if (isNaN(input.value) || input.value <= 0) {
-          input.value = 1;
-          updateCart();
-        }
-      }
+      getProducts();
 
       function addToCartClicked(event) {
         let title = `${this.parentElement.children[2].innerText}`;
@@ -306,9 +168,36 @@
           .addEventListener("change", quantityChanged);
       }
 
-      // let cartSubtotal = 0;
-      // let shipping = 0;
-      // let cartTotal = 0;
+      function removeCartItem(event) {
+        let buttonClicked = event.target;
+        buttonClicked.parentElement.parentElement.remove();
+        updateCart();
+      }
+
+      function quantityChanged(event) {
+        let input = event.target;
+        let title = `${this.parentElement.parentElement.children[0].children[0].innerText}`;
+        // refactor?
+        for (let i = 0; i < prodObj.products.length; i++) {
+          if (
+            title == prodObj.products[i].title &&
+            input.value > prodObj.products[i].stockQty
+          ) {
+            Swal.fire(
+              `There are only ${prodObj.products[i].stockQty} left in stock`
+            );
+            input.value = `${prodObj.products[i].stockQty}`;
+            updateCart();
+          } else if (input.value <= prodObj.products[i].stockQty) {
+            updateCart();
+          }
+        }
+        if (isNaN(input.value) || input.value <= 0) {
+          input.value = 1;
+          updateCart();
+        }
+      }
+
       let cartContents = [];
       let totalItems = 0;
 
@@ -375,24 +264,127 @@
         console.log(cartContents);
       }
 
-      let obj;
-
-      function getProducts() {
-        fetch("/modal")
-          .then((res) => res.json())
-          .then((data) => (obj = data));
+      function gotoCartClicked(){
+        document.querySelector(".content-section").scrollIntoView();
       }
 
-      function showModal(e) {
-        let title = `${this.parentElement.children[2].innerText}`;
-        for (let i = 0; i < obj.products.length; i++) {
-          if (title == obj.products[i].title) {
-            Swal.fire(`${obj.products[i].subtitle}`);
+      function checkoutClicked() {
+        if (document.querySelector(".cart-total-price").innerText === "$0") {
+          Swal.fire("There is nothing in the cart");
+        } else {
+          let paypalItems = [];
+          let name = "";
+          let unit_amount = {
+            currency_code: "USD",
+            value: 0,
+          };
+          
+          let quantity = 0;
+
+          function paypalItem(name, unit_amount, quantity) {
+            this.name = cartContent.title;
+            this.unit_amount = {
+              currency_code: "USD",
+              value: cartContent.price,
+            };
+            this.quantity = cartContent.quantity;
+          }
+
+          for (cartContent of cartContents) {
+            paypalItems.push(new paypalItem(name, unit_amount, quantity));
+          }
+
+          console.log(paypalItems);
+
+          function checkoutDbUpdate() {
+            fetch("/products", {
+              headers: { "Content-Type": "application/json" },
+              method: "PUT",
+              body: JSON.stringify(cartContents),
+            });
+          }
+
+          // beginning of paypal code with our additions
+
+          paypal
+            .Buttons({
+              createOrder: function (data, actions) {
+                return actions.order.create({
+                  purchase_units: [
+                    {
+                      description: "Andrew Altman Merch",
+                      amount: {
+                        currency_code: "USD",
+                        value: cartTotal,
+                        breakdown: {
+                          item_total: {
+                            currency_code: "USD",
+                            value: cartSubtotal,
+                          },
+                          shipping: {
+                            currency_code: "USD",
+                            value: shipping,
+                          },
+                        },
+                      },
+                      items: paypalItems,
+                    },
+                  ],
+                });
+              },
+              onApprove: function (data, actions) {
+                return actions.order
+                  .capture()
+                  .then(() => {
+                    window.location.href = "/products/thanks";
+                  })
+                  .then(checkoutDbUpdate());
+              },
+            })
+            .render("#paypal-button-container");
+
+            // end of paypal code with our additions
+
+          productsContainer.style.display = "none";
+
+          checkoutButton.style.display = "none";
+
+          keepShoppingButton.style.display = "block";
+
+          stickyCart.style.visibility = "hidden";
+
+          for (quantityInput of quantityInputs) {
+            quantityInput.readOnly = "readonly";
+          }
+
+          for (removeCartItemButton of removeCartItemButtons) {
+            removeCartItemButton.style.display = "none";
           }
         }
       }
 
-      window.addEventListener("DOMContentLoaded", getProducts);
+      function keepShoppingClicked() {
+        console.log(cartContents);
+
+        productsContainer.style.display = "flex";
+
+        checkoutButton.style.display = "block";
+
+        keepShoppingButton.style.display = "none";
+
+        stickyCart.style.visibility = "visible";
+
+        for (removeCartItemButton of removeCartItemButtons) {
+          removeCartItemButton.style.display = "block";
+        }
+
+        for (quantityInput of quantityInputs) {
+          quantityInput.readOnly = "";
+        }
+
+        paypalButtonContainer.innerHTML = "";
+      }
+
     }
   </script>
 </body>
