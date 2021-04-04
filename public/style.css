@@ -4,14 +4,6 @@
   padding: 0;
 }
 
-/* this allows the linear gradient background 
-to stretch, instead of repeating*/
-
-html {
-  min-height: 100%;
-  /* position: absolute; */
-}
-
 body {
   font-family: "Playfair Display", serif;
   background-color: rgba(206, 209, 213, 0.322);
@@ -21,7 +13,9 @@ body {
   flex-direction: column;
 }
 
-/* ====================== Home ======================= */
+/* ======================= */
+/* ======== Home ========= */
+/* ======================= */
 
 #home {
   font-family: "Cabin Sketch", cursive;
@@ -57,17 +51,16 @@ body {
 }
 
 a:link {
-  /* color: blanchedalmond; */
-  /* background-color: transparent; */
   text-decoration: none;
 }
 
 a:hover {
-  /* color: hotpink; */
   background-color: transparent;
 }
 
-/* ====================== Header ======================= */
+/* ======================== */
+/* ======== Header ======== */
+/* ======================== */
 
 header {
   height:fit-content;
@@ -82,13 +75,8 @@ header {
   }
 
 header a {
-  /* color: rgba(63, 45, 39, 0.534); */
   color: rgba(39,31,27, 0.75);
 }
-/* 
-header a:nth-of-type(2){
-  margin-left: 4vw;
-} */
 
 .store-nav-link {
   font-size: 1.3em;
@@ -96,26 +84,24 @@ header a:nth-of-type(2){
 
 .nav-socials {
   display: inline-block;
-  /* margin-right: -20px; */
 }
 
 .socials {
   margin: 0px 10px;
 }
 
-/* .middle-social {
-  margin: 0px 10px;
-} */
-
-/* ====================== Footer ======================= */
+/* ======================= */
+/* ======== Footer ======= */
+/* ======================= */
 
 .footer a {
   color: blanchedalmond;
   margin: 0px 1vw;
 }
 
-
-/* ====================== Thanks ======================== */
+/* ======================== */
+/* ======== Thanks ======== */
+/* ======================== */
 
 .message {
   opacity: .9;
@@ -142,21 +128,22 @@ header a:nth-of-type(2){
   padding: 2% 10%;
 }
 
-/* ====================== error ======================= */
+/* ======================== */
+/* ======== error ========= */
+/* ======================== */
 
 .error-h2 {
   font-family: 'Shadows Into Light', cursive;  
   font-size: 2em;
   padding: 10vh 12vh;
   margin: 10vh 16vw;
-  /* margin-top:10vh; */
   color: rgba(214, 231, 206);
   background-color: rgba(69, 109, 71, 0.6);
-  /* padding: 42% 10%; */
-
 }
 
-/* ================== Vinyl Masters =================== */
+/* ========================= */
+/* ===== Vinyl Masters ===== */
+/* ========================= */
 
 .please-enter {
   font-family: "Roboto", sans-serif;
@@ -168,7 +155,6 @@ header a:nth-of-type(2){
   font-size: 16px;
   width: 70vw;
   margin: 48px auto;
-  /* margin: 180px auto; */
   padding: 20px;
   border-radius: 5px;
   min-width: 200px;
@@ -231,12 +217,9 @@ header a:nth-of-type(2){
   text-decoration: none;
   margin: 4px;
   padding: 8px 40px;
-  /* border: 2px solid rgba(163,151,144, 0.8); */
   box-shadow: 0 1.5px 4px rgba(161, 160, 160, 0.1), 0 1.5px 6px rgba(165, 164, 164, 0.1);
   border-radius: 50px;
-  /* background-color: rgba(163,151,144, 0.8); */
   color: black;
-  /* width: 200px; */
 }
 
 .listen {
@@ -253,7 +236,6 @@ header a:nth-of-type(2){
   height: fit-content;
   margin: auto;
   padding: 5vh 2.5vw 9vh;
-  /* border: 1px solid rgba(68,92,108, 0.5); */
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.1), 0 1.5px 6px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   background: rgba(148, 143, 140, 0.4);
@@ -262,7 +244,6 @@ header a:nth-of-type(2){
 audio {
   margin: auto;
   width: 280px;
-  /* margin-top: 5vh; */
 }
 
 #playlist {
@@ -301,7 +282,9 @@ ul {
   list-style-type: none;
 }
 
-/* ====================== Store ======================= */
+/* ======================= */
+/* ======== Store ======== */
+/* ======================= */
 
 .store {
   background: white;
@@ -313,32 +296,23 @@ ul {
   margin: 2.5vh 5vw;
   display: flex;
   flex-wrap: wrap;
-  /* flex-wrap: nowrap; */
   flex-direction: row;
   justify-content: center;
-  /* align-items: flex-start; */
-  /* align-content: flex-start; */
   background: rgba(64, 85, 70, 0);
   border-radius: 2px;
 }
 
 .store-item {
   width: 80vw;
-  /* width: 18vw; */
   min-width: 220px;
   max-width: 280px;
   height: 340px;
-  /* flex: 1 1 25%; */
   margin: 2vh 2vw;
   border-radius: 2px;
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.1), 0 1.5px 6px rgba(0, 0, 0, 0.1);
   background-color: white;
   padding: 0px 0px 10px 0px;
 }
-
-/* .store-item:nth-last-of-type(1) {
-  flex: 50%;
-} */
 
 .product-thumb {
   max-width: 200px;
@@ -363,7 +337,6 @@ ul {
   height: 8%;
   padding: 4px 24px;
   margin-top: 8px;
-  /* background-color: rgba(238, 163, 138, 0.5); */
   background-color: rgba(136, 153, 135, 0.473);
   border-radius: 2px;
   color: rgb(27, 24, 24);
@@ -408,7 +381,9 @@ ul {
   background-color: rgba(150, 170, 149, 0.993);
 }
 
-/* ====================== Cart ======================== */
+/* ========================= */
+/* ========= Cart ========== */
+/* ========================= */
 
 .content-section {
   margin: 1em;
@@ -449,8 +424,6 @@ ul {
 }
 
 .cart-price {
-  /* width: 20%; */
-  /* margin-left: 20px; */
   font-size: 1.2em;
   color: #333;
 }
@@ -475,10 +448,8 @@ ul {
   padding: 4px 6px;
   color: rgb(99, 68, 68);
   background-color: rgba(175, 111, 95, 0.253);
-  /* background-color: #eb5757; */
   border: none;
   border-radius: 0.3em;
-  /* font-weight: bold; */
 }
 
 .btn-danger:hover {
@@ -496,7 +467,6 @@ ul {
   text-align: center;
   font-size: 1.2em;
   margin-right: 5px;
-  /* margin-right: 25px; */
   margin-left: 6px;
 }
 
@@ -509,9 +479,6 @@ ul {
 }
 
 .cart-total {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: flex-end; */
   text-align: end;
   margin-top: 50px;
   margin-right: 10px;
@@ -578,15 +545,13 @@ ul {
   border-radius: 5px;
 }
 
-/* ====================== MQ ======================== */
+/* ======================== */
+/* ========== MQ ========== */
+/* ======================== */
 
 /* for smaller than 580px */
 
 @media only screen and (max-width: 567px) {
-  /* .content-section{
-    display: none;
-  } */
-
   .name {
     font-size: 1.8rem;
   }
@@ -623,21 +588,11 @@ ul {
   .song {
     font-size: 1.6rem;
   }
-/* 
-  .socials {
-    display: none;
-  } */
-/* 
-  header {
-    height: 3vh;
-    margin-top: 3.5vh;
-    margin-bottom: 4.5vh;
-  } */
   
   .header-name {
     font-size: 2em;
     }
-  
+ 
 }
 
 @media only screen and (max-width: 846px) and (min-width: 537px) {
@@ -648,16 +603,14 @@ ul {
     flex-wrap: wrap;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     align-items: flex-start;
-    /* align-content: flex-start; */
     background: rgba(64, 85, 70, 0);
     border-radius: 2px;
   }
 }
 
 /* for larger than 800px */
-@media only screen and (min-width: 800px) and (min-height: 700px) {
+@media only screen and (min-width: 800px) {
   #form {
     margin: 140px auto;
     padding: 36px;
@@ -688,7 +641,7 @@ ul {
 
   .message h2{
     font-size: 24px;
-}
+  }
 }
 
 @media all and (max-aspect-ratio: 1110/740) {
@@ -713,8 +666,3 @@ ul {
   }
 }
 
-/* @media all and (orientation: landscape){
-  #hires-info{
-    width
-  }
-}  */
