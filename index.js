@@ -9,7 +9,6 @@ const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
 
 
-
 mongoose.connect("mongodb+srv://andrewaltman1:baseluvi@andrew-store.faqrq.mongodb.net/andrew-store?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -41,18 +40,9 @@ app.use(express.json());
 //loads the stylesheet
 app.use("/public", express.static("public"));
 
-
-// =============== favicon =============//
-
-// Express will not automatically serve files in the root directory. If you want to place /favicon.ico in your site's root directory, you will need to add the appropriate logic to your server:
-
-// app.get('../favicon_io/favicon.ico', (req, res) => {
-//   // Use actual relative path to your .ico file here
-//   res.sendFile(path.resolve(__dirname, "../favicon_io/favicon.ico"));
-// });
-
-// ================================= views ===================================== 
-
+// ===================================== 
+// ============= views =================
+// ===================================== 
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -69,10 +59,6 @@ app.get("/vinylmasters", (req, res) => {
 
 app.get("/vinylmasters.html", (req, res) => {
   res.render("vinylmasters");
-});
-
-app.get("/player", (req, res) => {
-  res.render("player");
 });
 
 app.get("/modal", catchAsync(async (req, res) => {
@@ -100,8 +86,10 @@ app.put("/products", catchAsync(async (req, res) => {
 app.get("/products/thanks", (req, res) => {
   res.render("products/thanks");
 });
-// ================================= errors ===================================== 
 
+// ===================================== 
+// ============= errors ================
+// ===================================== 
 
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404))
@@ -114,50 +102,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(3000, () => {
-  console.log("butts on port 3000");
+  console.log("listening on port 3000");
 });
-
-
-
-
-
-
-
-// app.get("/products/new", (req, res) => {
-//   res.render("products/new");
-// });
-
-// app.post("/products/checkout", async (req, res) => {
-//   console.log(req.body);
-//   res.render("products/checkout");
-// });
-
-// app.get("/products/:id", async (req, res) => {
-//   const product = await Product.findById(req.params.id);
-//   res.render("products/show", { product });
-// });
-
-// ================================= DB PAGE ===================================== 
-
-// app.post("/products", async (req, res) => {
-//   const product = new Product(req.body.product);
-//   await product.save();
-//   res.redirect(`/products/${product.id}`);
-// });
-
-// app.put("/products", async (req, res) => {
-//   const { title } = req.body.product;
-//   const product = await Product.findOneAndUpdate(
-//     { title: title },
-//     {
-//       ...req.body.product,
-//     }
-//   );
-//   res.redirect("/products");
-// });
-
-// app.delete("/products", async (req, res) => {
-//   const { title } = req.body.product;
-//   await Product.findOneAndDelete({ title: title });
-//   res.redirect("/products");
-// });
