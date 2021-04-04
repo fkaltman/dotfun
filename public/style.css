@@ -4,14 +4,6 @@
   padding: 0;
 }
 
-/* this allows the linear gradient background 
-to stretch, instead of repeating*/
-
-html {
-  min-height: 100%;
-  /* position: absolute; */
-}
-
 body {
   font-family: "Playfair Display", serif;
   background-color: rgba(206, 209, 213, 0.322);
@@ -25,7 +17,6 @@ body {
 
 #home {
   font-family: "Cabin Sketch", cursive;
-  background-color: rgb(206, 209, 213);
   color: rgba(34, 24, 9, 0.281);
   text-align: center;
   text-decoration: none;
