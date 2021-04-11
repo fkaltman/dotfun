@@ -1,0 +1,4 @@
+<script src="/public/scripts/bootstrap.js"></script>
+<% if (locals.scripts) { %> <% for (let script of scripts) { %>
+<script src="/public/scripts/<%= script %>.js"></script>
+<% } %> <% } %>
