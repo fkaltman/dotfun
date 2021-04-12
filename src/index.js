@@ -1,8 +1,10 @@
 const express = require('express');
+const helmet = require('helmet');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
+const crypto = require('crypto');
 const Product = require('./models/product');
 const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
@@ -37,10 +39,46 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.json());
-
 // loads the stylesheet
 app.use('/public', express.static('public'));
 
+const fontSrcUrls = [
+  'https://fonts.gstatic.com',
+  'https://fonts.googleapis.com/',
+  'https://ka-f.fontawesome.com/',
+];
+
+const scriptSrcUrls = [
+  'https://kit.fontawesome.com/',
+  'https://ka-f.fontawesome.com/',
+  'https://cdn.jsdelivr.net/',
+  'https://www.paypal.com/',
+  'https://www.sandbox.paypal.com/',
+];
+
+const connectSrcUrls = [
+  'https://kit.fontawesome.com/',
+  'https://ka-f.fontawesome.com/',
+  'https://www.sandbox.paypal.com/',
+];
+
+const frameSrcUrls = [
+  'https://kit.fontawesome.com/',
+  'https://ka-f.fontawesome.com/',
+  'https://www.sandbox.paypal.com/',
+];
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      'script-src': ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
+      'font-src': ["'self'", ...fontSrcUrls],
+      'connect-src': ["'self'", ...connectSrcUrls],
+      'frame-src': ["'self'", ...frameSrcUrls],
+    },
+  })
+);
 // =====================================
 // ============= views =================
 // =====================================
