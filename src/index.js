@@ -60,12 +60,14 @@ const connectSrcUrls = [
   'https://kit.fontawesome.com/',
   'https://ka-f.fontawesome.com/',
   'https://www.sandbox.paypal.com/',
+  'https://www.paypal.com/',
 ];
 
 const frameSrcUrls = [
   'https://kit.fontawesome.com/',
   'https://ka-f.fontawesome.com/',
   'https://www.sandbox.paypal.com/',
+  'https://www.paypal.com/',
 ];
 
 app.use(
@@ -76,9 +78,12 @@ app.use(
       'font-src': ["'self'", ...fontSrcUrls],
       'connect-src': ["'self'", ...connectSrcUrls],
       'frame-src': ["'self'", ...frameSrcUrls],
+      'img-src': ["'self'", 'data:', 'https://t.paypal.com/'],
     },
   })
 );
+
+console.log(helmet.contentSecurityPolicy.getDefaultDirectives());
 // =====================================
 // ============= views =================
 // =====================================
