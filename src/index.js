@@ -91,7 +91,7 @@ app.get(
   '/products',
   catchAsync(async (req, res) => {
     const products = await Product.find({}).sort({ price: -1 });
-    res.render('products/index', { products });
+    res.render('products/store', { products });
   })
 );
 

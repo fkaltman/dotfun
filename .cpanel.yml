@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/sfmodaca/andrewaltmanfunv3
+    - /bin/cp -R favicon_io (1) $DEPLOYPATH
+    - /bin/cp -R favicon_package_v0.16 (1) $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R src $DEPLOYPATH
