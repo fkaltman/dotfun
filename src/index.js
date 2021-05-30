@@ -68,6 +68,8 @@ const frameSrcUrls = [
   'https://ka-f.fontawesome.com/',
   'https://www.sandbox.paypal.com/',
   'https://www.paypal.com/',
+  'https://www.youtube.com/',
+  'https://youtu.be/',
 ];
 
 app.use(
@@ -83,7 +85,6 @@ app.use(
   })
 );
 
-console.log(helmet.contentSecurityPolicy.getDefaultDirectives());
 // =====================================
 // ============= views =================
 // =====================================
@@ -140,6 +141,32 @@ app.put(
 
 app.get('/products/thanks', (req, res) => {
   res.render('products/thanks');
+});
+
+app.get('/videos', (req, res) => {
+  const videos = [
+    {
+      title: 'The Last Supper (Live)',
+      src: 'https://www.youtube.com/embed/kAmVSCMYSjk?list=PL_S3IMjKETpeYY4do7Dff8iySUTW28WIg',
+    },
+    {
+      title: 'Be Prime',
+      src: 'https://www.youtube.com/embed/QZEy8VwnOeE?list=PL_S3IMjKETpeYY4do7Dff8iySUTW28WIg',
+    },
+    {
+      title: 'The Moment (Live)',
+      src: 'https://www.youtube.com/embed/MsqhXM4PPGk?list=PL_S3IMjKETpeYY4do7Dff8iySUTW28WIg',
+    },
+    {
+      title: 'The Greatest Thing',
+      src: 'https://www.youtube.com/embed/7ET6lIz6TkQ?list=PL_S3IMjKETpeYY4do7Dff8iySUTW28WIg',
+    },
+    {
+      title: 'The Moment',
+      src: 'https://www.youtube.com/embed/nRofbsT8KoY?list=PL_S3IMjKETpeYY4do7Dff8iySUTW28WIg',
+    },
+  ];
+  res.render('videos', { videos });
 });
 
 // =====================================

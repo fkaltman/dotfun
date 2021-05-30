@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   background-color: rgba(206, 209, 213, 0.322);
   text-align: center;
   min-height: 100vh;
@@ -18,12 +18,12 @@ body {
 /* ======================= */
 
 #home {
-  font-family: "Cabin Sketch", cursive;
+  font-family: 'Cabin Sketch', cursive;
   color: rgba(34, 24, 9, 0.281);
   text-align: center;
   text-decoration: none;
   min-height: 100vh;
-  background: url("images/bass_hand_center_wide.jpg");
+  background: url('images/bass_hand_center_wide.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -62,19 +62,19 @@ a:hover {
 /* ======================== */
 
 header {
-  height:fit-content;
+  height: fit-content;
   background-size: 100%;
   margin-top: 2vh;
 }
 
 .header-name {
   color: #888484e3;
-  font-family: "Cabin Sketch", cursive;
+  font-family: 'Cabin Sketch', cursive;
   font-size: 3em;
-  }
+}
 
 header a {
-  color: rgba(39,31,27, 0.75);
+  color: rgba(39, 31, 27, 0.75);
 }
 
 .store-nav-link {
@@ -87,6 +87,172 @@ header a {
 
 .socials {
   margin: 0px 10px;
+}
+
+/* ======================= */
+/* ======== Hamburger ======= */
+/* ======================= */
+
+.ham {
+  position: fixed;
+  /* keep the hamburger button above everything */
+  z-index: 100;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border: black solid 1px;
+  background: white;
+  cursor: pointer;
+}
+
+.xIcon {
+  display: none;
+}
+
+/* .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  color: white;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+  list-style: none;
+  padding-top: 4rem;
+} */
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 100;
+  right: 0;
+  bottom: 0;
+  width: 5rem;
+  height: 100vh;
+  background: black;
+  color: white;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+  list-style: none;
+  padding-top: 4rem;
+}
+
+.showMenu {
+  opacity: 0%;
+  transition: opacity 0.5s;
+}
+
+li {
+  padding: 1rem 0;
+}
+
+.menuLink {
+  display: inline;
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  text-align: left;
+}
+
+.menuLink:hover {
+  text-decoration: underline;
+}
+
+/* ======================= */
+/* ======== videos ======= */
+/* ======================= */
+
+.videos {
+  background: url('images/bass_hand_center_wide.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.fa-home {
+  position: fixed;
+  z-index: 100;
+  top: 3vh;
+  right: 4vh;
+  font-size: 3rem;
+  color: rgb(19, 11, 7);
+  background-color: rgba(206, 209, 213, 0.1);
+  border-radius: 100px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  filter: drop-shadow(0 0 0.3rem white);
+  cursor: pointer;
+}
+
+/* .videos header {
+  position: absolute;
+  top: 30%;
+  bottom: 30%;
+  left: 30%;
+  right: 30%;
+  z-index: -1;
+} */
+
+#video-area {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+  align-items: center;
+  width: 90vw;
+  height: 60vh;
+  margin: auto auto;
+  background-color: rgba(206, 209, 213, 0.9);
+  overflow: auto;
+  filter: drop-shadow(0 0 0.1rem rgba(206, 209, 213, 0.9));
+}
+
+#title-scroller .fas {
+  font-size: 3em;
+  color: rgb(19, 11, 7);
+}
+
+#title-scroller {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  width: 90%;
+  /* margin: 8vh auto; */
+  background-color: rgb(206, 209, 213);
+}
+
+.video-wrapper {
+  height: auto;
+  width: 90%;
+  /* margin: auto; */
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.toggle-content {
+  display: none;
+}
+
+.toggle-content.is-visible {
+  display: flex;
 }
 
 /* ======================= */
@@ -103,8 +269,8 @@ header a {
 /* ======================== */
 
 .message {
-  opacity: .9;
-  font-family: 'Shadows Into Light', cursive;  
+  opacity: 0.9;
+  font-family: 'Shadows Into Light', cursive;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -118,10 +284,10 @@ header a {
   width: 300px;
 }
 
-.message h2{
+.message h2 {
   font-size: 14px;
-  width:800px;
-  margin-top:18%;
+  width: 800px;
+  margin-top: 18%;
   color: rgba(214, 231, 206);
   background-color: rgba(69, 110, 102, 0.9);
   padding: 2% 10%;
@@ -132,7 +298,7 @@ header a {
 /* ======================== */
 
 .error-h2 {
-  font-family: 'Shadows Into Light', cursive;  
+  font-family: 'Shadows Into Light', cursive;
   font-size: 2em;
   padding: 10vh 12vh;
   margin: 10vh 16vw;
@@ -145,7 +311,7 @@ header a {
 /* ========================= */
 
 .please-enter {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 24px;
 }
 
@@ -176,26 +342,26 @@ header a {
   border-radius: 6px;
   margin-top: 1vh;
   margin-bottom: 1vh;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: lightgray;
 }
 
 #code-input {
   font-size: 18px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 120px;
   height: 30px;
   margin-top: 1vh;
 }
 
 .vinyl-master-title {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   padding-top: 4vh;
 }
 
 #hires-info {
-  color: rgb(39, 31, 27);
-  font-family: "Roboto", sans-serif;
+  color: rgb(19, 11, 7);
+  font-family: 'Roboto', sans-serif;
   width: 50vw;
   padding: 16px;
   margin: 8vh auto auto auto;
@@ -204,7 +370,7 @@ header a {
 }
 
 #hires {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #links {
@@ -226,9 +392,8 @@ header a {
 }
 
 .download {
-  background-color: rgba(69, 110, 102, 0.6);;
+  background-color: rgba(69, 110, 102, 0.6);
 }
-
 
 #audioplayerContainter {
   width: fit-content;
@@ -250,7 +415,7 @@ audio {
 }
 
 .song {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin-top: 1.6vh;
   text-align: center;
   font-size: 2rem;
@@ -291,7 +456,7 @@ ul {
 }
 
 #store-products {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 2.5vh 5vw;
   display: flex;
   flex-wrap: wrap;
@@ -329,7 +494,7 @@ ul {
 
 .cart-button-store,
 .details-button-store {
-  font-family: "Montserrat", Helvetica, sans-serif;
+  font-family: 'Montserrat', Helvetica, sans-serif;
   font-weight: 500;
   font-size: 0.9em;
   width: 60%;
@@ -508,7 +673,7 @@ ul {
 
 .btn-checkout,
 .btn-keep-shopping {
-  font-family: "Montserrat", Helvetica, sans-serif;
+  font-family: 'Montserrat', Helvetica, sans-serif;
   font-size: 0.9em;
   width: 200px;
   height: 8%;
@@ -535,13 +700,13 @@ ul {
 }
 
 .goto-cart {
-  font-family: "Montserrat", Helvetica, sans-serif;
+  font-family: 'Montserrat', Helvetica, sans-serif;
   font-weight: 500;
   font-size: 0.9em;
   padding: 5px;
   background-color: rgba(153, 177, 152, 0.473);
   color: rgb(87, 68, 68);
-  border: 2px solid rgb(121, 119, 119); 
+  border: 2px solid rgb(121, 119, 119);
   border-radius: 5px;
 }
 
@@ -562,6 +727,10 @@ ul {
 
   h1 {
     font-size: 1rem;
+  }
+
+  #title-scroller .fas {
+    font-size: 1em;
   }
 
   #form {
@@ -588,16 +757,15 @@ ul {
   .song {
     font-size: 1.6rem;
   }
-  
+
   .header-name {
     font-size: 2em;
-    }
- 
+  }
 }
 
 @media only screen and (max-width: 846px) and (min-width: 537px) {
   #store-products {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 2.5vh 5vw;
     display: flex;
     flex-wrap: wrap;
@@ -610,7 +778,7 @@ ul {
 }
 
 /* for larger than 800px */
-@media only screen and (min-width: 800px){
+@media only screen and (min-width: 800px) {
   #form {
     margin: 140px auto;
     padding: 36px;
@@ -639,12 +807,38 @@ ul {
     width: 600px;
   }
 
-  .message h2{
+  .message h2 {
     font-size: 24px;
   }
 
-  .cart{
-  width: 800px;
+  .cart {
+    width: 800px;
+  }
+}
+
+@media only screen and (max-height: 420px) {
+  .name {
+    font-size: 1.8rem;
+  }
+
+  #home h2 {
+    font-size: 1.3rem;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  #title-scroller .fas {
+    font-size: 1em;
+  }
+
+  .header-name {
+    font-size: 2em;
+  }
+
+  #video-area {
+    justify-content: flex-start;
   }
 }
 
@@ -658,7 +852,7 @@ ul {
 
 @media all and (orientation: portrait) {
   #home {
-    background: url("images/bass_hand_center_mobile.jpg");
+    background: url('images/bass_hand_center_mobile.jpg');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -667,6 +861,21 @@ ul {
     top: 30px;
     left: 30px;
     right: auto;
-  } 
+  }
+
+  #title-scroller {
+    /* margin: 2vh auto; */
+  }
+
+  .fa-home {
+    top: 4.5vh;
+    right: 4vh;
+  }
 }
 
+@media all and (orientation: landscape) {
+  #video-area {
+    width: 60vw;
+    height: 80vh;
+  }
+}

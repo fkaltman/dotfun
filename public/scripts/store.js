@@ -154,6 +154,8 @@
       fetch('/modal')
         .then(res => res.json())
         .then(data => {
+          console.log(data.products);
+
           const title = `${this.parentElement.children[2].innerText}`;
           for (let i = 0; i < data.products.length; i += 1) {
             if (title === data.products[i].title) {

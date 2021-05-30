@@ -1,0 +1,124 @@
+<% layout('layouts/boilerplate') %>
+
+<body class="videos">
+  <a href="/"><i class="fas fa-home"></i></a>
+  <div id="video-area">
+    <div id="title-scroller">
+      <i class="fas fa-arrow-alt-circle-left"></i>
+      <ul>
+        <% for (let video of videos){%>
+        <li class="titles toggle-content" src="<%= video.src %>"><h1><%= video.title %></h1></li>
+        <%}%>
+      </ul>
+      <i class="fas fa-arrow-alt-circle-right"></i>
+    </div>
+    <div class="video-wrapper">
+      <iframe
+        width="100%"
+        height="100%"
+        src="<%= videos[0].src %>"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</body>
+
+<script>
+  (function videos() {
+    function ready() {
+      const videoPlayer = document.querySelector('iframe');
+      const titles = document.querySelectorAll('.titles');
+      var menu = document.querySelector('.menu');
+      var ham = document.querySelector('.ham');
+      var xIcon = document.querySelector('.xIcon');
+      var menuIcon = document.querySelector('.menuIcon');
+      var menuLinks = document.querySelectorAll('.menuLink');
+      document.querySelector('.titles:first-of-type').classList.add('is-visible');
+
+      // Show an element
+      var show = function (elem) {
+        elem.classList.add('is-visible');
+      };
+
+      // Hide an element
+      var hide = function (elem) {
+        elem.classList.remove('is-visible');
+      };
+
+      // Toggle element visibility
+      var toggle = function (elem) {
+        elem.classList.toggle('is-visible');
+      };
+
+      function arrowScrollRight() {
+        console.log('clicked');
+        for (let title of titles) {
+          if (title.classList.value.includes('is-visible') && title.nextElementSibling !== null) {
+            hide(title);
+            show(title.nextElementSibling);
+            videoPlayer.src = title.nextElementSibling.attributes.src.value;
+            break;
+          }
+        }
+      }
+
+      function arrowScrollLeft() {
+        console.log('clicked');
+        for (let title of titles) {
+          if (
+            title.classList.value.includes('is-visible') &&
+            title.previousElementSibling !== null
+          ) {
+            hide(title);
+            show(title.previousElementSibling);
+            videoPlayer.src = title.previousElementSibling.attributes.src.value;
+            break;
+          }
+        }
+      }
+
+      function videoSrc() {
+        console.log(videoPlayer.src);
+        for (let title of titles) {
+          if (title.classList.value.includes('is-visible')) {
+            videoPlayer.src.value = 'title.src.value';
+            break;
+          }
+        }
+      }
+
+      function toggleMenu() {
+        if (videoPlayer.classList.contains('showMenu')) {
+          videoPlayer.classList.remove('showMenu');
+          xIcon.style.display = 'none';
+          menuIcon.style.display = 'block';
+        } else {
+          videoPlayer.classList.add('showMenu');
+          xIcon.style.display = 'block';
+          menuIcon.style.display = 'none';
+        }
+      }
+
+      // ham.addEventListener('click', toggleMenu);
+
+      menuLinks.forEach(function (menuLink) {
+        menuLink.addEventListener('click', toggleMenu);
+      });
+
+      document
+        .querySelector('.fa-arrow-alt-circle-right')
+        .addEventListener('click', arrowScrollRight);
+      document
+        .querySelector('.fa-arrow-alt-circle-left')
+        .addEventListener('click', arrowScrollLeft);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', ready);
+    } else {
+      ready();
+    }
+  })();
+</script>
