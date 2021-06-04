@@ -773,14 +773,14 @@ ul {
   }
   .mid-content {
     align-items: flex-start;
-    top: 30px;
-    left: 30px;
+    top: 25px;
+    left: 25px;
     right: auto;
   }
 
   .fa-home {
-    top: 4.5vh;
-    right: 4vh;
+    top: 3.8vh;
+    right: 3.8vh;
   }
 }
 
