@@ -108,7 +108,7 @@ header a {
   z-index: 100;
   top: 3vh;
   right: 4vh;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: rgb(19, 11, 7);
   background-color: rgba(206, 209, 213, 0.1);
   border-radius: 100px;
@@ -773,14 +773,14 @@ ul {
   }
   .mid-content {
     align-items: flex-start;
-    top: 25px;
-    left: 25px;
+    top: 3vh;
+    left: 4.5vw;
     right: auto;
   }
 
   .fa-home {
-    top: 3.8vh;
-    right: 3.8vh;
+    top: 3vh;
+    right: 3.5vh;
   }
 }
 
