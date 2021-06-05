@@ -12,6 +12,13 @@
       </ul>
       <i class="fas fa-arrow-alt-circle-right"></i>
     </div>
+    <div class="carousel">
+      <i class="fas fa-circle carousel-markers carousel-selected"></i>
+      <% for (let i = 1; i < videos.length; i += 1){%>
+      <i class="fas fa-circle carousel-markers"></i>
+      <%}%>
+    </div>
+
     <div class="video-wrapper">
       <iframe
         width="100%"

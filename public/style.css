@@ -147,6 +147,16 @@ header a {
   background-color: rgb(206, 209, 213);
 }
 
+.carousel-selected {
+  color: rgb(206, 209, 213);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+}
+
+.carousel-markers {
+  color: rgba(19, 11, 7, 0.1);
+}
+
 .video-wrapper {
   height: auto;
   width: 90%;
@@ -648,6 +658,10 @@ ul {
     font-size: 1em;
   }
 
+  .carousel-markers {
+    font-size: 0.8em;
+  }
+
   #form {
     height: 155px;
     margin-top: 100px;
@@ -746,6 +760,10 @@ ul {
 
   #title-scroller .fas {
     font-size: 1em;
+  }
+
+  .carousel-markers {
+    font-size: 0.8em;
   }
 
   .header-name {
