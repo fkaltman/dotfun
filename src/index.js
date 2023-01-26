@@ -9,15 +9,12 @@ const Product = require('./models/product');
 const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
 
-mongoose.connect(
-  'mongodb+srv://andrewaltman1:baseluvi@andrew-store.faqrq.mongodb.net/andrew-store?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  }
-);
+mongoose.connect(process.env.DB_CONNECT, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
