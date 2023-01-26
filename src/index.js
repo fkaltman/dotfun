@@ -10,7 +10,7 @@ const Product = require('./models/product');
 const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
 
-mongoose.connect(process.env.DB_CONNECT, {
+mongoose.connect(`${process.env.DB_CONNECT}`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -181,6 +181,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render('error', { err });
 });
 
-app.listen(3000, () => {
-  console.log('listening on port 3000');
+app.listen(process.env.PORT, () => {
+  console.log(`listening on port ${process.env.PORT}`);
 });
